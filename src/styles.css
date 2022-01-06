@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+.form-horizontal {
+    width: 50%;
+    margin: 0 auto;
+}
+
+@media (max-width: 800px) {
+    .form-horizontal {
+        width: 90%;
+    }
+}
+
+.alert {
+    color: red;
+    margin: 0 !important;
+    margin-bottom: 0.5em !important;
+    padding: 0 !important;
+}

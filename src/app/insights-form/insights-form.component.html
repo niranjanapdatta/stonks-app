@@ -1,0 +1,42 @@
+<form class="form-horizontal" #insightForm="ngForm" (ngSubmit)="submitAction()">
+
+    <div class="form-group">
+      <label class="form-label" for="title">Title</label>
+      <input type="text" class="form-control" id="title" name="title" [(ngModel)]="insight.title" #title="ngModel" required minlength="5">
+    </div>
+    <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert">
+        <div *ngIf="title.errors?.['required']">
+            Title is required
+        </div>
+        <div *ngIf="title.errors?.['minlength']">
+            Title must be at least 5 characters long
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label" for="summary">Summary</label>
+        <textarea class="form-control" id="summary" name="summary" rows="5" [(ngModel)]="insight.summary" #summary="ngModel" required minlength="30"></textarea>
+    </div>
+    <div *ngIf="summary.invalid && (summary.dirty || summary.touched)" class="alert">
+        <div *ngIf="summary.errors?.['required']">
+            Summary is required
+        </div>
+        <div *ngIf="summary.errors?.['minlength']">
+            Summary must be at least 30 characters long
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label" for="for_symbol">For Symbol</label>
+        <input type="text" class="form-control" id="for_symbol" name="for_symbol" [(ngModel)]="insight.for_symbol">
+    </div>
+
+    <div class="form-group">
+        <label class="form-label" for="image_link">Image Link</label>
+        <input type="text" class="form-control" id="image_link" name="image_link" [(ngModel)]="insight.image_link">
+    </div>
+
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary" [disabled]='!insightForm.valid'>Publish</button>
+    </div>
+</form>
