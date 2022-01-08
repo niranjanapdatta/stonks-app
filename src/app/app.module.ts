@@ -12,6 +12,11 @@ import { TriviaListComponent } from './trivia-list/trivia-list.component';
 import { AboutComponent } from './about/about.component';
 import { InsightsFormComponent } from './insights-form/insights-form.component';
 import { FormsModule } from '@angular/forms';
+import { TriviaFormComponent } from './trivia-form/trivia-form.component';
+import { LoginFormComponent } from './login-form/login-form.component';
+import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
+import { StockFormComponent } from './stock-form/stock-form.component';
+import { AddItemsComponent } from './add-items/add-items.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +27,12 @@ import { FormsModule } from '@angular/forms';
     InsightsListComponent,
     TriviaListComponent,
     AboutComponent,
-    InsightsFormComponent
+    InsightsFormComponent,
+    TriviaFormComponent,
+    LoginFormComponent,
+    SignUpFormComponent,
+    StockFormComponent,
+    AddItemsComponent
   ],
   imports: [
     BrowserModule,

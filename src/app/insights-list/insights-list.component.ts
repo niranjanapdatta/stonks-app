@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { InsightService } from '../insight.service';
 import { Insight } from '../models/insight';
+import { InsightService } from '../services/insight.service';
 
 @Component({
   selector: 'app-insights-list',

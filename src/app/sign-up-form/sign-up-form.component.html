@@ -1,0 +1,27 @@
+<form class="form-horizontal" #signUpForm="ngForm" (ngSubmit)="submitAction()">
+
+    <div class="form-group">
+      <label class="form-label" for="username">Username</label>
+      <input type="text" class="form-control" id="username" name="username" [(ngModel)]="user.username" #username="ngModel" required>
+    </div>
+    <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert">
+        <div *ngIf="username.errors?.['required']">
+            Username is required
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label" for="password">Password</label>
+        <input type="password" class="form-control" id="password" name="password" [(ngModel)]="user.password" #password="ngModel" required>
+      </div>
+      <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert">
+          <div *ngIf="password.errors?.['required']">
+            Password is required
+          </div>
+    </div>
+
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary" [disabled]='!signUpForm.valid'>Sign Up</button>
+    </div>
+
+</form>

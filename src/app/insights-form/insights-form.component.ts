@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Insight } from '../models/insight';
-import { InsightService } from '../insight.service';
-import { emptyInsight } from '../constants/emptyInsight';
+import { InsightService } from '../services/insight.service';
 
 @Component({
   selector: 'app-insights-form',
@@ -10,7 +9,7 @@ import { emptyInsight } from '../constants/emptyInsight';
 })
 export class InsightsFormComponent implements OnInit {
 
-  insight: Insight = emptyInsight;
+  insight: Insight = {};
 
   constructor(
     private insightService: InsightService
@@ -19,9 +18,16 @@ export class InsightsFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  submitAction() : void {
-    console.log(this.insight);
-    this.insightService.createInsight(this.insight).subscribe(res => console.log(res));
+  submitAction(): void {
+    this.insightService.createInsight(this.insight).subscribe(res => {
+      switch(res) {
+      case "success": alert("Article has been successfully published!");
+                    break;
+      default: alert("Oops! There was a problem while publishing the article. Please try again later.");
+                    break;
+    }
+    this.insight = {}; // Clear the form
+    });
   }
 
 }
