@@ -1,0 +1,40 @@
+<app-nav-bar></app-nav-bar>
+<form class="form-horizontal" #editTriviaForm="ngForm" (ngSubmit)="submitAction()">
+
+    <div class="form-group">
+      <label class="form-label" for="title">Title</label>
+      <input type="text" class="form-control" id="title" name="title" [(ngModel)]="trivia.title" #title="ngModel" required minlength="2">
+    </div>
+    <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert">
+        <div *ngIf="title.errors?.['required']">
+            Title is required
+        </div>
+        <div *ngIf="title.errors?.['minlength']">
+            Title must be at least 2 characters long
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label" for="description">Description</label>
+        <textarea class="form-control" id="description" name="description" rows="5" [(ngModel)]="trivia.description" #description="ngModel" required minlength="30"></textarea>
+    </div>
+    <div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert">
+        <div *ngIf="description.errors?.['required']">
+            Description is required
+        </div>
+        <div *ngIf="description.errors?.['minlength']">
+            Description must be at least 30 characters long
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label" for="video_url">Video Link</label>
+        <input type="text" class="form-control" id="video_url" name="video_url" [(ngModel)]="trivia.video_url">
+    </div>
+
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary" [disabled]='!editTriviaForm.valid'>Update</button>
+    </div>
+
+</form>
+<app-footer></app-footer>

@@ -11,6 +11,8 @@ export class InsightService {
 
   private apiBaseUrl: String = environment.apiBaseUrl;
 
+  private insightToBeEdited: Insight = {};
+
   constructor(private http: HttpClient) { }
 
   createInsight(insight: Insight): Observable<any> {
@@ -27,6 +29,14 @@ export class InsightService {
 
   deleteInsight(insight: Insight): Observable<any> {
     return this.http.delete(`${this.apiBaseUrl}/delete_article`, {body: insight, responseType: 'text'});
+  }
+
+  setInsightToBeEdited(insightToBeEdited: Insight): void {
+    this.insightToBeEdited = insightToBeEdited;
+  }
+
+  getInsightToBeEdited(): Insight {
+    return this.insightToBeEdited;
   }
 
 }

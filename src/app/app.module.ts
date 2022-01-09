@@ -21,6 +21,9 @@ import { CompareStocksComponent } from './compare-stocks/compare-stocks.componen
 import { AccountComponent } from './account/account.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { DeleteAccountComponent } from './delete-account/delete-account.component';
+import { EditStockFormComponent } from './edit-stock-form/edit-stock-form.component';
+import { EditInsightsFormComponent } from './edit-insights-form/edit-insights-form.component';
+import { EditTriviaFormComponent } from './edit-trivia-form/edit-trivia-form.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,10 @@ import { DeleteAccountComponent } from './delete-account/delete-account.componen
     CompareStocksComponent,
     AccountComponent,
     ChangePasswordComponent,
-    DeleteAccountComponent
+    DeleteAccountComponent,
+    EditStockFormComponent,
+    EditInsightsFormComponent,
+    EditTriviaFormComponent
   ],
   imports: [
     BrowserModule,

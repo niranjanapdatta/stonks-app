@@ -1,12 +1,14 @@
 <app-nav-bar></app-nav-bar>
 <div class="list-group" *ngFor="let insight of insights">
-    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="border-bottom">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">{{ insight.title }}</h5>
         <small>{{ insight.timestamp }}</small>
       </div>
       <p class="mb-1">{{ insight.summaryForDisplay }}</p>
-      <small>{{ insight.for_symbol }}</small>
-    </a>
+      <small class="right-margin btn btn-link" (click)="editInsightAction(insight)" *ngIf="user.is_admin">Edit</small>
+      <small class="btn btn-link" *ngIf="user.is_admin">Delete</small>
+    </div>
+    <hr>
 </div>
 <app-footer></app-footer>

@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Stock } from '../models/stock';
+import { User } from '../models/user';
 import { StockService } from '../services/stock.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-stocks-list',
@@ -17,8 +19,11 @@ export class StocksListComponent implements OnInit {
 
   stocksToCompare: Stock[] = [];
 
+  user: User = {};
+
   constructor(
     private stockService: StockService,
+    private userService: UserService,
     private router: Router
     ) { }
 
@@ -28,6 +33,7 @@ export class StocksListComponent implements OnInit {
       const bankNiftyData: Stock[] = res[1];
       this.stocks = niftyData.concat(bankNiftyData);
     });
+    this.user = this.userService.getUserData();
   }
 
   stockDisplay(stockData: Stock): void {

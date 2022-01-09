@@ -29,3 +29,11 @@
 .nav-link {
     color: white !important;
 }
+
+.right-margin {
+    margin-right: 2em;
+}
+
+.right-margin-small {
+    margin-right: 0.5em;
+}

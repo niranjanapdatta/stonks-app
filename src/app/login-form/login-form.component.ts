@@ -27,10 +27,12 @@ export class LoginFormComponent implements OnInit {
                       break;
         case "incorrect": alert("Incorrect password!");
                       break;
-        case "user":  this.userService.setUserData(this.user);
+        case "user":  this.user.is_admin = false;
+                      this.userService.setUserData(this.user);
                       this.router.navigate(['/home']);
                       break;
-        case "admin": this.userService.setUserData(this.user);
+        case "admin": this.user.is_admin = true;
+                      this.userService.setUserData(this.user);
                       this.router.navigate(['/home']);
                       break;
         default: alert("Oops! There was a problem while logging in. Please try again later.");

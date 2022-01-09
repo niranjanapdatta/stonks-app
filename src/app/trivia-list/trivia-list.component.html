@@ -1,10 +1,13 @@
 <app-nav-bar></app-nav-bar>
 <div class="list-group" *ngFor="let trivia of trivias">
-    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="border-bottom">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">{{ trivia.title }}</h5>
       </div>
       <p class="mb-1">{{ trivia.descriptionForDisplay }}</p>
-    </a>
+      <small class="right-margin btn btn-link" (click)="editTriviaAction(trivia)" *ngIf="user.is_admin">Edit</small>
+      <small class="btn btn-link" *ngIf="user.is_admin">Delete</small>
+    </div>
+    <hr>
 </div>
 <app-footer></app-footer>

@@ -11,6 +11,8 @@ export class TriviaService {
 
   private apiBaseUrl: String = environment.apiBaseUrl;
 
+  private triviaToBeEdited: Trivia = {};
+
   constructor(private http: HttpClient) { }
 
   createTrivia(trivia: Trivia): Observable<any> {
@@ -27,6 +29,14 @@ export class TriviaService {
 
   deleteTrivia(trivia: Trivia): Observable<any> {
     return this.http.delete(`${this.apiBaseUrl}/delete_trivia`, {body: trivia, responseType: 'text'});
+  }
+
+  setTriviaToBeEdited(triviaToBeEdited: Trivia): void {
+    this.triviaToBeEdited = triviaToBeEdited;
+  }
+
+  getTriviaToBeEdited(): Trivia {
+    return this.triviaToBeEdited;
   }
 
 }
