@@ -11,6 +11,8 @@ export class StockService {
 
   private apiBaseUrl: String = environment.apiBaseUrl;
 
+  private stocks: Stock[] = [];
+
   constructor(private http: HttpClient) { }
 
   getData(): Observable<any[]> {
@@ -20,7 +22,23 @@ export class StockService {
   }
 
   addSymbol(stock: Stock): Observable<any> {
-    return this.http.post(`${this.apiBaseUrl}/add_symbol`, stock, { responseType: 'text'});
+    return this.http.post(`${this.apiBaseUrl}/add_symbol`, stock, {responseType: 'text'});
+  }
+
+  setStocksToCompare(stocks: Stock[]): void {
+    this.stocks = stocks;
+  }
+
+  getStocksToCompare(): Stock[] {
+    return this.stocks;
+  }
+
+  updateStock(stock: Stock): Observable<any> {
+    return this.http.put(`${this.apiBaseUrl}/edit_symbol`, stock, {responseType: 'text'});
+  }
+
+  deleteStock(stock: Stock): Observable<any> {
+    return this.http.delete(`${this.apiBaseUrl}/delete_symbol`, {body: stock, responseType: 'text'});
   }
 
 }

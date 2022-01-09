@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from '../models/user';
 import { UserService } from '../services/user.service';
 
@@ -12,7 +13,8 @@ export class LoginFormComponent implements OnInit {
   user: User = {};
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -25,9 +27,11 @@ export class LoginFormComponent implements OnInit {
                       break;
         case "incorrect": alert("Incorrect password!");
                       break;
-        case "user": this.userService.setIsAdmin(false);
+        case "user":  this.userService.setUserData(this.user);
+                      this.router.navigate(['/home']);
                       break;
-        case "admin": this.userService.setIsAdmin(true);
+        case "admin": this.userService.setUserData(this.user);
+                      this.router.navigate(['/home']);
                       break;
         default: alert("Oops! There was a problem while logging in. Please try again later.");
                       break;

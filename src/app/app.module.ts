@@ -17,6 +17,10 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
 import { StockFormComponent } from './stock-form/stock-form.component';
 import { AddItemsComponent } from './add-items/add-items.component';
+import { CompareStocksComponent } from './compare-stocks/compare-stocks.component';
+import { AccountComponent } from './account/account.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+import { DeleteAccountComponent } from './delete-account/delete-account.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,11 @@ import { AddItemsComponent } from './add-items/add-items.component';
     LoginFormComponent,
     SignUpFormComponent,
     StockFormComponent,
-    AddItemsComponent
+    AddItemsComponent,
+    CompareStocksComponent,
+    AccountComponent,
+    ChangePasswordComponent,
+    DeleteAccountComponent
   ],
   imports: [
     BrowserModule,

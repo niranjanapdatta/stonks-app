@@ -1,5 +1,5 @@
 export interface User {
     username?: String,
-    password?: String,
+    password?: string,
     is_admin?: Boolean
 };

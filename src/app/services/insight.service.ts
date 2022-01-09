@@ -14,10 +14,19 @@ export class InsightService {
   constructor(private http: HttpClient) { }
 
   createInsight(insight: Insight): Observable<any> {
-    return this.http.post(`${this.apiBaseUrl}/publish_article`, insight, { responseType: 'text'});
+    return this.http.post(`${this.apiBaseUrl}/publish_article`, insight, {responseType: 'text'});
   }
 
   getInsights(): Observable<Insight[]> {
     return this.http.get<Insight[]>(`${this.apiBaseUrl}/ARTICLES`);
   }
+
+  updateInsight(insight: Insight): Observable<any> {
+    return this.http.put(`${this.apiBaseUrl}/edit_article`, insight, {responseType: 'text'});
+  }
+
+  deleteInsight(insight: Insight): Observable<any> {
+    return this.http.delete(`${this.apiBaseUrl}/delete_article`, {body: insight, responseType: 'text'});
+  }
+
 }

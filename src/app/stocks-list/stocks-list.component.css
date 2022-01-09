@@ -1,0 +1,61 @@
+.search-placeholder{
+    margin: 1rem;
+    padding: 0.5rem;
+}
+
+.stock-list{
+    margin:0.5rem;
+    padding: 0.5rem;;
+}
+
+.stock-item{
+    background-color: springgreen;
+    padding: 0.5rem;
+    margin: 0.5rem;
+}
+
+.stock-item:hover{
+    background-color: rgb(7, 112, 60);
+    padding: 0.5rem;
+    margin: 0.25rem;
+}
+
+.stock-symbol{
+    font-weight: 600;
+}
+
+.stock-price{
+    /* logic for red green colour of stock price */
+}
+
+.scrollable {
+    height: 700px;
+    overflow-y: scroll;
+  }
+
+.scrollable2 {
+    height: 720px;
+    overflow-y: scroll;
+  }
+
+.stock-charts-placeholder{
+    margin: 1rem;
+    background-color: cornflowerblue;
+    padding: 0.5rem;;
+}
+
+.table-placeholder{
+    margin: 1rem;
+}
+
+.stock-info-collapse{
+    background-color: darkorange;
+    padding: 0.5rem;;
+}
+
+.stock-news-collapse{
+    margin: 1 rem;
+    background-color: skyblue;
+    padding: 0.5rem;;
+}
+

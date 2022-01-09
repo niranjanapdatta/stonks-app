@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
+import { AccountComponent } from './account/account.component';
 import { AddItemsComponent } from './add-items/add-items.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+import { CompareStocksComponent } from './compare-stocks/compare-stocks.component';
+import { DeleteAccountComponent } from './delete-account/delete-account.component';
 import { InsightsFormComponent } from './insights-form/insights-form.component';
 import { InsightsListComponent } from './insights-list/insights-list.component';
 import { LoginFormComponent } from './login-form/login-form.component';
@@ -11,7 +15,7 @@ import { TriviaFormComponent } from './trivia-form/trivia-form.component';
 import { TriviaListComponent } from './trivia-list/trivia-list.component';
 
 const routes: Routes = [
-  { path: "", component: StocksListComponent},
+  { path: "", component: LoginFormComponent },
   { path: "home", component: StocksListComponent },
   { path: "insights", component: InsightsListComponent },
   { path: "trivia", component: TriviaListComponent },
@@ -20,7 +24,11 @@ const routes: Routes = [
   { path: "addStock", component: StockFormComponent },
   { path: "addInsight", component: InsightsFormComponent },
   { path: "addTrivia", component: TriviaFormComponent },
-  { path: "loginPage", component: LoginFormComponent }
+  { path: "login", component: LoginFormComponent },
+  { path: "compare", component: CompareStocksComponent },
+  { path: "account", component: AccountComponent },
+  { path: "changePassword", component: ChangePasswordComponent },
+  { path: "deleteAccount", component: DeleteAccountComponent }
 ];
 
 @NgModule({

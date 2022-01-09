@@ -21,8 +21,10 @@ export class TriviaListComponent implements OnInit {
       this.trivias = res;
       if(this.trivias != undefined)
         for(let trivia of this.trivias)
-          if(trivia.description != undefined && trivia.description.length > 30)
-            trivia.descriptionForDisplay = trivia.description.slice(0, 400) + ".........";
+          if(trivia.description != undefined)
+            if(trivia.description.length > 400)
+              trivia.descriptionForDisplay = trivia.description.slice(0, 400) + ".........";
+            else trivia.descriptionForDisplay = trivia.description;
     });
   }
 

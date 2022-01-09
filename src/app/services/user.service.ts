@@ -11,26 +11,32 @@ export class UserService {
 
   private apiBaseUrl: String = environment.apiBaseUrl;
 
-  isLoggedIn: Boolean = false;
-
-  isAdmin: Boolean = false;
+  user: User = {};
 
   constructor(private http: HttpClient) { }
 
   authenticateUser(user: User): Observable<any> {
-    return this.http.post(`${this.apiBaseUrl}/authenticate`, user, { responseType: 'text'});
-  }
-
-  setIsAdmin(isAdmin: Boolean): void {
-    this.isAdmin = isAdmin;
-  }
-
-  getIsAdmin(): Boolean {
-    return this.isAdmin;
+    return this.http.post(`${this.apiBaseUrl}/authenticate`, user, {responseType: 'text'});
   }
 
   registerUser(user: User): Observable<any> {
-    return this.http.post(`${this.apiBaseUrl}/register`, user, { responseType: 'text'});
+    return this.http.post(`${this.apiBaseUrl}/register`, user, {responseType: 'text'});
+  }
+
+  setUserData(user: User): void {
+    this.user = user;
+  }
+
+  getUserData(): User {
+    return this.user;
+  }
+
+  changePassword(user: any): Observable<any> {
+    return this.http.put(`${this.apiBaseUrl}/change_password`, user, {responseType: 'text'});
+  }
+
+  deleteAccount(user: User): Observable<any> {
+    return this.http.delete(`${this.apiBaseUrl}/delete_user`, {body: user, responseType: 'text'});
   }
 
 }

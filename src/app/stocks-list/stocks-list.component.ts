@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Stock } from '../models/stock';
 import { StockService } from '../services/stock.service';
@@ -12,8 +13,13 @@ export class StocksListComponent implements OnInit {
 
   stocks: Stock[] | undefined;
 
+  stockData: Stock | undefined;
+
+  stocksToCompare: Stock[] = [];
+
   constructor(
-    private stockService: StockService
+    private stockService: StockService,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -22,6 +28,24 @@ export class StocksListComponent implements OnInit {
       const bankNiftyData: Stock[] = res[1];
       this.stocks = niftyData.concat(bankNiftyData);
     });
+  }
+
+  stockDisplay(stockData: Stock): void {
+    this.stockData = stockData;
+  }
+
+  checkboxAction(stock: Stock, event: any): void {
+    if(event.target.checked)
+      this.stocksToCompare.push(stock);
+    else
+      for(var i = 0; i < this.stocksToCompare.length; i++)
+        if (this.stocksToCompare[i] === stock)
+          this.stocksToCompare.splice(i, 1);
+  }
+
+  compareStocks(): void {
+    this.stockService.setStocksToCompare(this.stocksToCompare);
+    this.router.navigate(['/compare']);
   }
 
 }

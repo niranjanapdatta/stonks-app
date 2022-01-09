@@ -1,0 +1,19 @@
+<app-nav-bar></app-nav-bar>
+<form class="form-horizontal" #deleteAccountForm="ngForm" (ngSubmit)="submitAction()">
+
+    <div class="form-group">
+        <label class="form-label" for="password">Password</label>
+        <input type="password" class="form-control" id="password" name="password" [(ngModel)]="user.password" #password="ngModel" required>
+      </div>
+      <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert">
+          <div *ngIf="password.errors?.['required']">
+            Password is required
+          </div>
+    </div>
+
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary" [disabled]='!deleteAccountForm.valid'>Delete Account</button>
+    </div>
+
+</form>
+<app-footer></app-footer>
