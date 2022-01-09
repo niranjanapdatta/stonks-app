@@ -3,5 +3,6 @@ export interface Insight {
     summary?: String,
     for_symbol?: String,
     image_link?: String,
-    timestamp?: Date
+    timestamp?: Date,
+    summaryForDisplay?: String
 };

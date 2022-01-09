@@ -10,14 +10,18 @@ import { StockService } from '../services/stock.service';
 })
 export class StocksListComponent implements OnInit {
 
-  stocks: Observable<Stock[]> | undefined;
+  stocks: Stock[] | undefined;
 
   constructor(
     private stockService: StockService
     ) { }
 
   ngOnInit(): void {
-    this.stocks = this.stockService.getSymbols();
+    this.stockService.getData().subscribe((res) => {
+      const niftyData: Stock[] = res[0];
+      const bankNiftyData: Stock[] = res[1];
+      this.stocks = niftyData.concat(bankNiftyData);
+    });
   }
 
 }

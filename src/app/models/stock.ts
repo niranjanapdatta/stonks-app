@@ -1,3 +1,5 @@
+import { StockAnalysis } from "./stockAnalysis";
+
 export interface Stock {
     _id?: String,
     name?: String,
@@ -6,5 +8,6 @@ export interface Stock {
     expense_ratio?: Number,
     dividend?: Number,
     series?: String,
-    about?: String
+    about?: String,
+    analysis? : StockAnalysis[]
 };

@@ -10,14 +10,20 @@ import { InsightService } from '../services/insight.service';
 })
 export class InsightsListComponent implements OnInit {
 
-  insights: Observable<Insight[]> | undefined;
+  insights: Insight[] | undefined;
 
   constructor(
     private insightService: InsightService
     ) { }
 
   ngOnInit(): void {
-    this.insights = this.insightService.getInsights();
+    this.insightService.getInsights().subscribe((res) => {
+      this.insights = res;
+      if(this.insights != undefined)
+        for(let trivia of this.insights)
+          if(trivia.summary != undefined && trivia.summary.length > 30)
+            trivia.summaryForDisplay = trivia.summary.slice(0, 300) + ".........";
+    });
   }
 
 }

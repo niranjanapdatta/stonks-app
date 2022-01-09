@@ -12,6 +12,4 @@ export class NavBarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // role based auth : https://jasonwatmore.com/post/2020/09/09/angular-10-role-based-authorization-tutorial-with-example
-
 }

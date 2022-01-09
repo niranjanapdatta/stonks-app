@@ -1,10 +1,10 @@
-<div class="list-group" *ngFor="let insight of insights | async">
+<div class="list-group" *ngFor="let insight of insights">
     <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">{{ insight.title }}</h5>
         <small>{{ insight.timestamp }}</small>
       </div>
-      <p class="mb-1">{{ insight.summary }}</p>
+      <p class="mb-1">{{ insight.summaryForDisplay }}</p>
       <small>{{ insight.for_symbol }}</small>
     </a>
 </div>
