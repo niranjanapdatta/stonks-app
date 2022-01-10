@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from '../models/user';
 import { UserService } from '../services/user.service';
 
@@ -14,7 +15,8 @@ export class ChangePasswordComponent implements OnInit {
   reTypePassword: String = "";
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -30,6 +32,7 @@ export class ChangePasswordComponent implements OnInit {
         case "incorrect": alert("Incorrect current password!");
                       break;
         case "success": alert("Password has been changed successfully");
+                      this.router.navigate(['/login']);
                       break;
         default: alert("Oops! There was a problem while changing your password. Please try again later.");
                       break;

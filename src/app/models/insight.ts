@@ -1,5 +1,5 @@
 export interface Insight {
-    _id?: String,
+    _id?: any,
     title?: String,
     summary?: String,
     for_symbol?: String,
