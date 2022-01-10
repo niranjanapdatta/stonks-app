@@ -5,7 +5,7 @@
       [ngStyle]="{'background-color': stock.analysis?.[0]?.is_bullish ? '#90ee90' : '#ffcccb'}" (click)="stockDisplay(stock)">
       {{ stock.name }}
       <span><small class="right-margin-small">{{ stock.analysis?.[0]?.close }}</small>
-        <input type="checkbox" (click)="checkboxAction(stock, $event)" *ngIf="!user.is_admin">
+        <input type="checkbox" (click)="checkboxAction(stock, $event)">
         <small class="right-margin-small btn btn-link" *ngIf="user.is_admin">Edit</small>
         <small class="btn btn-link" *ngIf="user.is_admin">Delete</small>
       </span>

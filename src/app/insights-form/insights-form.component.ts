@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Insight } from '../models/insight';
 import { InsightService } from '../services/insight.service';
 
@@ -12,7 +13,8 @@ export class InsightsFormComponent implements OnInit {
   insight: Insight = {};
 
   constructor(
-    private insightService: InsightService
+    private insightService: InsightService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -22,11 +24,13 @@ export class InsightsFormComponent implements OnInit {
     this.insightService.createInsight(this.insight).subscribe(res => {
       switch(res) {
       case "success": alert("Article has been successfully published!");
+                    this.router.navigate(['/insights']);
+                    break;
+      case "symbol": alert("Symbol provided for the field For Symbol does not exist!");
                     break;
       default: alert("Oops! There was a problem while publishing the article. Please try again later.");
                     break;
     }
-    this.insight = {}; // Clear the form
     });
   }
 

@@ -24,6 +24,29 @@ export class TriviaListComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    this.getTriviasData();
+    this.user = this.userService.getUserData();
+  }
+
+  editTriviaAction(triviaToBeEdited: Trivia): void {
+    this.triviaService.setTriviaToBeEdited(triviaToBeEdited);
+    this.router.navigate(['/editTrivia']);
+  }
+
+  deleteTriviaAction(triviaToBeDeleted: Trivia): void {
+    this.triviaService.deleteTrivia(triviaToBeDeleted).subscribe(res => {
+      switch(res) {
+        case "success": alert("Trivia has been deleted successfully!");
+                        break;
+        default: alert("Oops! There was a problem while deleting the Trivia. Please try again later.");
+                break;
+      }
+      this.getTriviasData();
+    });
+  }
+
+
+  getTriviasData(): void {
     this.triviaService.getTrivias().subscribe((res) => {
       this.trivias = res;
       if(this.trivias != undefined)
@@ -33,13 +56,6 @@ export class TriviaListComponent implements OnInit {
               trivia.descriptionForDisplay = trivia.description.slice(0, 400) + ".........";
             else trivia.descriptionForDisplay = trivia.description;
     });
-    this.user = this.userService.getUserData();
   }
-
-  editTriviaAction(triviaToBeEdited: Trivia): void {
-    this.triviaService.setTriviaToBeEdited(triviaToBeEdited);
-    this.router.navigate(['/editTrivia']);
-  }
-
 
 }

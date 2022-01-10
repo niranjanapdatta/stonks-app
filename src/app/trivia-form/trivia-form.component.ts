@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Trivia } from '../models/trivia';
 import { TriviaService } from '../services/trivia.service';
 
@@ -12,7 +13,8 @@ export class TriviaFormComponent implements OnInit {
   trivia: Trivia = {};
 
   constructor(
-    private triviaService: TriviaService
+    private triviaService: TriviaService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -22,11 +24,11 @@ export class TriviaFormComponent implements OnInit {
     this.triviaService.createTrivia(this.trivia).subscribe(res => {
       switch(res) {
       case "success": alert("Trivia has been successfully created!");
+                    this.router.navigate(['/trivia']);
                     break;
       default: alert("Oops! There was a problem while creating the trivia. Please try again later.");
                     break;
     }
-    this.trivia = {}; // Clear the form
     });
   }
 

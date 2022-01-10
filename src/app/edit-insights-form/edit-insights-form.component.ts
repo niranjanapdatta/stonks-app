@@ -27,6 +27,8 @@ export class EditInsightsFormComponent implements OnInit {
       case "success": alert("Article has been successfully updated!");
                     this.router.navigate(['/insights']);
                     break;
+      case "symbol": alert("Symbol provided for the field For Symbol does not exist!");
+                    break;
       default: alert("Oops! There was a problem while updating the article. Please try again later.");
                     break;
     }
