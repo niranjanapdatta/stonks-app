@@ -12,8 +12,6 @@ export class ChangePasswordComponent implements OnInit {
 
   user: any = {};
 
-  reTypePassword: String = "";
-
   constructor(
     private userService: UserService,
     private router: Router
@@ -25,19 +23,21 @@ export class ChangePasswordComponent implements OnInit {
   }
 
   submitAction(): void {
-    this.userService.changePassword(this.user).subscribe(res => {
-      switch(res) {
-        case "username": alert("User by that username does not exist!");
-                      break;
-        case "incorrect": alert("Incorrect current password!");
-                      break;
-        case "success": alert("Password has been changed successfully");
-                      this.router.navigate(['/login']);
-                      break;
-        default: alert("Oops! There was a problem while changing your password. Please try again later.");
-                      break;
-      }
-    });
+    if(this.user.retypePassword && this.user.password && this.user.retypePassword == this.user.password)
+      this.userService.changePassword(this.user).subscribe(res => {
+        switch(res) {
+          case "username": alert("User by that username does not exist!");
+                        break;
+          case "incorrect": alert("Incorrect current password!");
+                        break;
+          case "success": alert("Password has been changed successfully. Please relogin.");
+                        this.router.navigate(['/login']);
+                        break;
+          default: alert("Oops! There was a problem while changing your password. Please try again later.");
+                        break;
+        }
+      });
+    else alert("Retyped New Password does not match New Password");
   }
 
 

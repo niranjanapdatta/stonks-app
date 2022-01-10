@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from '../models/user';
 import { UserService } from '../services/user.service';
 
@@ -9,31 +10,37 @@ import { UserService } from '../services/user.service';
 })
 export class SignUpFormComponent implements OnInit {
 
-  user: User = {};
+  user: any = {};
 
   reTypePassword: String = "";
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.user.is_admin = false;
   }
 
   submitAction(): void {
-    this.userService.registerUser(this.user).subscribe(res => {
-      switch(res) {
-        case "exists": alert("User by that username already exists!");
-                      break;
-        case "success": alert("Sign Up Success");
-                      break;
-        default: alert("Oops! There was a problem while signing up. Please try again later.");
-                      break;
-      }
-      this.user = {}; // Clear the form
-      this.user.is_admin = false;
-    });
+    const newUser: User = {
+      username: this.user.username,
+      password: this.user.password,
+      is_admin: false
+    }
+    if(this.user.retypePassword && this.user.password && this.user.retypePassword == this.user.password)
+      this.userService.registerUser(newUser).subscribe(res => {
+        switch(res) {
+          case "exists": alert("User by that username already exists!");
+                        break;
+          case "success": alert("Sign Up Success. Please login to your account.");
+                        this.router.navigate(['/login']);
+                        break;
+          default: alert("Oops! There was a problem while signing up. Please try again later.");
+                        break;
+        }
+      });
+    else alert("Retyped Password does not match Password");
   }
 
 }
