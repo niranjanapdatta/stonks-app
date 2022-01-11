@@ -127,8 +127,8 @@
 <table class="table table-striped">
     <thead class="thead-dark">
       <tr>
-        <th scope="col">Title</th>
-        <th scope="col">Description</th>
+        <th scope="col">Field</th>
+        <th scope="col">Value</th>
       </tr>
     </thead>
     <tbody>
@@ -145,7 +145,7 @@
         <td>{{ stock.analysis?.[0]?.close }}</td>
       </tr>
       <tr>
-        <th scope="row">Current Status</th>
+        <th scope="row">Current Trend</th>
         <td *ngIf="stock.analysis?.[0]?.is_bullish">Bullish</td>
         <td *ngIf="!stock.analysis?.[0]?.is_bullish">Bearish</td>
       </tr>

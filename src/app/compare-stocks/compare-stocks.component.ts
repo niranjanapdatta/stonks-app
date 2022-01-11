@@ -14,13 +14,13 @@ export class CompareStocksComponent implements OnInit {
 
   stocks: Stock[] = [];
 
-  sm_returns: PotentialReturns[] = [];
+  sm_returns$: PotentialReturns[] = [];
 
-  oy_returns: PotentialReturns[] = [];
+  oy_returns$: PotentialReturns[] = [];
 
-  ty_returns: PotentialReturns[] = [];
+  ty_returns$: PotentialReturns[] = [];
 
-  fy_returns: PotentialReturns[] = [];
+  fy_returns$: PotentialReturns[] = [];
 
   public barChartOptions: ChartOptions = {
     responsive: true,
@@ -48,25 +48,25 @@ export class CompareStocksComponent implements OnInit {
     this.stocks = this.stockService.getStocksToCompare();
 
     for(let i=0; i < this.stocks.length; i++) {
-      this.sm_returns[i] = this.calculateReturns(this.stocks[i].analysis?.[0]?.close, 
+      this.sm_returns$[i] = this.calculateReturns(this.stocks[i].analysis?.[0]?.close, 
         this.stocks[i].analysis?.[0]?.sm_close, 
         this.stocks[i].dividend, 
         this.stocks[i].expense_ratio,
         0
       );
-    this.oy_returns[i] = this.calculateReturns(this.stocks[i].analysis?.[0]?.close, 
+    this.oy_returns$[i] = this.calculateReturns(this.stocks[i].analysis?.[0]?.close, 
       this.stocks[i].analysis?.[0]?.oy_close, 
       this.stocks[i].dividend, 
       this.stocks[i].expense_ratio,
       1
     );
-    this.ty_returns[i] = this.calculateReturns(this.stocks[i].analysis?.[0]?.close, 
+    this.ty_returns$[i] = this.calculateReturns(this.stocks[i].analysis?.[0]?.close, 
       this.stocks[i].analysis?.[0]?.ty_close, 
       this.stocks[i].dividend, 
       this.stocks[i].expense_ratio,
       3
     );
-    this.fy_returns[i] = this.calculateReturns(this.stocks[i].analysis?.[0]?.close, 
+    this.fy_returns$[i] = this.calculateReturns(this.stocks[i].analysis?.[0]?.close, 
       this.stocks[i].analysis?.[0]?.fy_close, 
       this.stocks[i].dividend, 
       this.stocks[i].expense_ratio,

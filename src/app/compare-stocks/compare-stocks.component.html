@@ -1,3 +1,201 @@
 <app-nav-bar></app-nav-bar>
-
+<div class="stock-page-container">
+    <!-- <div style="display: block;">
+        <canvas baseChart 
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="barChartOptions"
+          [plugins]="barChartPlugins"
+          [legend]="barChartLegend"
+          [chartType]="barChartType">
+        </canvas>
+</div> -->
+<h3>Stock Analysis</h3>
+<table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th class="header" scope="col">Analysis/ Stock</th>
+        <th class="header" scope="col">Close (₹)</th>
+        <th class="header" scope="col">Volatility</th>
+        <th class="header" scope="col">Beta</th>
+        <th class="header" scope="col">Price Up (Days)</th>
+        <th class="header" scope="col">Average Price Up (₹)</th>
+        <th class="header" scope="col">Price Down (Days)</th>
+        <th class="header" scope="col">Average Price Down (₹)</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td colspan="8">
+                <h5 class="text-center">Six Months: {{ stocks[0].analysis?.[0]?.sm_date }}</h5>
+            </td>
+        </tr>
+      <tr *ngFor="let stock of stocks">
+        <th scope="row">{{ stock.name }}</th>
+        <td>{{ stock.analysis?.[0]?.sm_close }}</td>
+        <td>{{ stock.analysis?.[0]?.sm_volatility }}</td>
+        <td>{{ stock.analysis?.[0]?.sm_beta }}</td>
+        <td>{{ stock.analysis?.[0]?.sm_price_up }}</td>
+        <td>{{ stock.analysis?.[0]?.sm_avg_price_up }}</td>
+        <td>{{ stock.analysis?.[0]?.sm_price_down }}</td>
+        <td>{{ stock.analysis?.[0]?.sm_avg_price_down }}</td>
+      </tr>
+        <tr>
+        <td colspan="8">
+            <h5 class="text-center">One Year: {{ stocks[0].analysis?.[0]?.oy_date }}</h5>
+        </td>
+        </tr>
+      <tr *ngFor="let stock of stocks">
+        <th scope="row">{{ stock.name }}</th>
+        <td>{{ stock.analysis?.[0]?.oy_close }}</td>
+        <td>{{ stock.analysis?.[0]?.oy_volatility }}</td>
+        <td>{{ stock.analysis?.[0]?.oy_beta }}</td>
+        <td>{{ stock.analysis?.[0]?.oy_price_up }}</td>
+        <td>{{ stock.analysis?.[0]?.oy_avg_price_up }}</td>
+        <td>{{ stock.analysis?.[0]?.oy_price_down }}</td>
+        <td>{{ stock.analysis?.[0]?.oy_avg_price_down }}</td>
+      </tr>
+      <tr>
+        <td colspan="8">
+            <h5 class="text-center">Three Years: {{ stocks[0].analysis?.[0]?.ty_date }}</h5>
+        </td>
+        </tr>
+      <tr *ngFor="let stock of stocks">
+        <th scope="row">{{ stock.name }}</th>
+        <td>{{ stock.analysis?.[0]?.ty_close }}</td>
+        <td>{{ stock.analysis?.[0]?.ty_volatility }}</td>
+        <td>{{ stock.analysis?.[0]?.ty_beta }}</td>
+        <td>{{ stock.analysis?.[0]?.ty_price_up }}</td>
+        <td>{{ stock.analysis?.[0]?.ty_avg_price_up }}</td>
+        <td>{{ stock.analysis?.[0]?.ty_price_down }}</td>
+        <td>{{ stock.analysis?.[0]?.ty_avg_price_down }}</td>
+      </tr>
+      <tr>
+        <td colspan="8">
+            <h5 class="text-center">Five Years: {{ stocks[0].analysis?.[0]?.fy_date }}</h5>
+        </td>
+        </tr>
+      <tr *ngFor="let stock of stocks">
+        <th scope="row">{{ stock.name }}</th>
+        <td>{{ stock.analysis?.[0]?.fy_close }}</td>
+        <td>{{ stock.analysis?.[0]?.fy_volatility }}</td>
+        <td>{{ stock.analysis?.[0]?.fy_beta }}</td>
+        <td>{{ stock.analysis?.[0]?.fy_price_up }}</td>
+        <td>{{ stock.analysis?.[0]?.fy_avg_price_up }}</td>
+        <td>{{ stock.analysis?.[0]?.fy_price_down }}</td>
+        <td>{{ stock.analysis?.[0]?.fy_avg_price_down }}</td>
+      </tr>
+    </tbody>
+</table>
+<hr/>
+<h3>Potential Returns</h3>
+<table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th class="header" scope="col">Stock/ Calculation For</th>
+        <th class="header" scope="col">Profit</th>
+        <th class="header" scope="col">Dividend</th>
+        <th class="header" scope="col">Expenses</th>
+        <th class="header" scope="col">Returns</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td colspan="8">
+            <h5 class="text-center">Six Months: {{ stocks[0].analysis?.[0]?.sm_date }}</h5>
+        </td>
+    </tr>
+      <tr *ngFor="let sm_returns of sm_returns$">
+        <th scope="row">{{ stocks[sm_returns$.indexOf(sm_returns)].name }}</th>
+        <td>{{ sm_returns.profit }}</td>
+        <td>{{ sm_returns.dividend }}</td>
+        <td>{{ sm_returns.expenses }}</td>
+        <td>{{ sm_returns.returns }}</td>
+      </tr>
+      <tr>
+        <td colspan="8">
+            <h5 class="text-center">One Year: {{ stocks[0].analysis?.[0]?.oy_date }}</h5>
+        </td>
+    </tr>
+      <tr *ngFor="let oy_returns of oy_returns$">
+        <th scope="row">{{ stocks[oy_returns$.indexOf(oy_returns)].name }}</th>
+        <td>{{ oy_returns.profit }}</td>
+        <td>{{ oy_returns.dividend }}</td>
+        <td>{{ oy_returns.expenses }}</td>
+        <td>{{ oy_returns.returns }}</td>
+      </tr>
+      <tr>
+        <td colspan="8">
+            <h5 class="text-center">Three Years: {{ stocks[0].analysis?.[0]?.ty_date }}</h5>
+        </td>
+    </tr>
+      <tr *ngFor="let ty_returns of ty_returns$">
+        <th scope="row">{{ stocks[ty_returns$.indexOf(ty_returns)].name }}</th>
+        <td>{{ ty_returns.profit }}</td>
+        <td>{{ ty_returns.dividend }}</td>
+        <td>{{ ty_returns.expenses }}</td>
+        <td>{{ ty_returns.returns }}</td>
+      </tr>
+      <tr>
+        <td colspan="8">
+            <h5 class="text-center">Five Years: {{ stocks[0].analysis?.[0]?.fy_date }}</h5>
+        </td>
+    </tr>
+      <tr *ngFor="let fy_returns of fy_returns$">
+        <th scope="row">{{ stocks[fy_returns$.indexOf(fy_returns)].name }}</th>
+        <td>{{ fy_returns.profit }}</td>
+        <td>{{ fy_returns.dividend }}</td>
+        <td>{{ fy_returns.expenses }}</td>
+        <td>{{ fy_returns.returns }}</td>
+      </tr>
+    </tbody>
+</table>
+<hr/>
+<h3>Stock Details</h3>
+<table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Stock/ Field</th>
+        <th scope="col" *ngFor="let stock of stocks">{{ stock.name }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Symbol</th>
+        <td *ngFor="let stock of stocks">{{ stock._id }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Current Close (₹)</th>
+        <td *ngFor="let stock of stocks">{{ stock.analysis?.[0]?.close }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Current Trend</th>
+        <td *ngFor="let stock of stocks">
+            <div *ngIf="stock.analysis?.[0]?.is_bullish">Bullish</div>
+            <div *ngIf="!stock.analysis?.[0]?.is_bullish">Bearish</div>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Market Standard</th>
+        <td *ngFor="let stock of stocks">{{ stock.market_standard }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Series</th>
+        <td *ngFor="let stock of stocks">{{ stock.series }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Expense Ratio</th>
+        <td *ngFor="let stock of stocks">{{ stock.expense_ratio }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Dividend</th>
+        <td *ngFor="let stock of stocks">{{ stock.dividend }}</td>
+      </tr>
+      <tr>
+        <th scope="row">About</th>
+        <td *ngFor="let stock of stocks">{{ stock.about }}</td>
+      </tr>
+    </tbody>
+</table>
+</div>
 <app-footer></app-footer>

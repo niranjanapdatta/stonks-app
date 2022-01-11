@@ -10,6 +10,11 @@
     }
 }
 
+.header{
+    position:sticky;
+    top: 0 ;
+}
+
 img, iframe {
     margin-top: 1em;
     width: 40em;
