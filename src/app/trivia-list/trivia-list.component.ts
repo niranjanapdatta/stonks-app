@@ -28,6 +28,11 @@ export class TriviaListComponent implements OnInit {
     this.user = this.userService.getUserData();
   }
 
+  viewTriviaAction(triviaToBeViewed: Trivia): void {
+    this.triviaService.setTriviaToBeViewed(triviaToBeViewed);
+    this.router.navigate(['/triviaPage']);
+  }
+
   editTriviaAction(triviaToBeEdited: Trivia): void {
     this.triviaService.setTriviaToBeEdited(triviaToBeEdited);
     this.router.navigate(['/editTrivia']);

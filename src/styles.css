@@ -10,6 +10,33 @@
     }
 }
 
+img, iframe {
+    margin-top: 1em;
+    width: 40em;
+    height: 20em;
+}
+
+.blog-container {
+    width: 55%;
+    margin: 0 auto;
+    text-align: center;
+    border: 0.1em solid #D3D3D3;
+}
+
+.blog-item-width {
+    margin: 0 auto;
+    width: 85%;
+}
+
+.blog-item {
+    border-bottom: 0.1em solid #D3D3D3;
+    margin-bottom: 1em;
+}
+
+.blog-main {
+    margin-bottom: 1em;
+}
+
 .alert {
     color: red;
     margin: 0 !important;
@@ -36,4 +63,13 @@
 
 .right-margin-small {
     margin-right: 0.5em;
+}
+
+.link-item {
+    color: black;
+    text-decoration: none !important;
+}
+
+.link-item:hover {
+    color: blue !important;
 }

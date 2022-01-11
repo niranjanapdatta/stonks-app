@@ -1,0 +1,17 @@
+<app-nav-bar></app-nav-bar>
+<div class="blog-container">
+    <img [src]="insight?.image_link"/>
+    <div  class="blog-item-width">
+    <h3 class="text-left">
+        {{ insight?.title }}
+    </h3>
+    <div class="d-flex justify-content-between blog-item">
+        <small class="font-weight-light">{{ insight?.for_symbol }}</small>
+        <small class="font-weight-light">{{ insight?.timestamp?.toString()?.split('T')?.[0] }}</small>
+    </div>
+    <p class="text-left blog-main">
+        {{ insight?.summary }}
+    </p>
+    </div>
+</div>
+<app-footer></app-footer>

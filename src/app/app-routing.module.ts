@@ -9,6 +9,7 @@ import { DeleteAccountComponent } from './delete-account/delete-account.componen
 import { EditInsightsFormComponent } from './edit-insights-form/edit-insights-form.component';
 import { EditStockFormComponent } from './edit-stock-form/edit-stock-form.component';
 import { EditTriviaFormComponent } from './edit-trivia-form/edit-trivia-form.component';
+import { InsightPageComponent } from './insight-page/insight-page.component';
 import { InsightsFormComponent } from './insights-form/insights-form.component';
 import { InsightsListComponent } from './insights-list/insights-list.component';
 import { LoginFormComponent } from './login-form/login-form.component';
@@ -17,9 +18,10 @@ import { StockFormComponent } from './stock-form/stock-form.component';
 import { StocksListComponent } from './stocks-list/stocks-list.component';
 import { TriviaFormComponent } from './trivia-form/trivia-form.component';
 import { TriviaListComponent } from './trivia-list/trivia-list.component';
+import { TriviaPageComponent } from './trivia-page/trivia-page.component';
 
 const routes: Routes = [
-  { path: "", component: LoginFormComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: "home", component: StocksListComponent },
   { path: "insights", component: InsightsListComponent },
   { path: "trivia", component: TriviaListComponent },
@@ -36,7 +38,9 @@ const routes: Routes = [
   { path: "editStock", component: EditStockFormComponent },
   { path: "editInsight", component: EditInsightsFormComponent },
   { path: "editTrivia", component: EditTriviaFormComponent },
-  { path: "signup", component: SignUpFormComponent }
+  { path: "signup", component: SignUpFormComponent },
+  { path: 'insight', component: InsightPageComponent },
+  { path: 'triviaPage', component: TriviaPageComponent }
 ];
 
 @NgModule({

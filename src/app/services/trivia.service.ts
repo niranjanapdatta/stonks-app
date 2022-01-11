@@ -11,6 +11,8 @@ export class TriviaService {
 
   private apiBaseUrl: String = environment.apiBaseUrl;
 
+  private triviaToBeViewed: Trivia = {};
+
   private triviaToBeEdited: Trivia = {};
 
   constructor(private http: HttpClient) { }
@@ -37,6 +39,14 @@ export class TriviaService {
 
   getTriviaToBeEdited(): Trivia {
     return this.triviaToBeEdited;
+  }
+
+  setTriviaToBeViewed(triviaToBeViewed: Trivia): void {
+    this.triviaToBeViewed = triviaToBeViewed;
+  }
+
+  getTriviaToBeViewed(): Trivia {
+    return this.triviaToBeViewed;
   }
 
 }

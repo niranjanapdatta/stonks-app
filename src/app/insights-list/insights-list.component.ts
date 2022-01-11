@@ -28,6 +28,11 @@ export class InsightsListComponent implements OnInit {
     this.user = this.userService.getUserData();
   }
 
+  viewInsightAction(insightToBeViewed: Insight): void {
+    this.insightService.setInsightToBeViewed(insightToBeViewed);
+    this.router.navigate(['/insight']);
+  }
+
   editInsightAction(insightToBeEdited: Insight): void {
     this.insightService.setInsightToBeEdited(insightToBeEdited);
     this.router.navigate(['/editInsight']);

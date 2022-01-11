@@ -24,6 +24,8 @@ import { DeleteAccountComponent } from './delete-account/delete-account.componen
 import { EditStockFormComponent } from './edit-stock-form/edit-stock-form.component';
 import { EditInsightsFormComponent } from './edit-insights-form/edit-insights-form.component';
 import { EditTriviaFormComponent } from './edit-trivia-form/edit-trivia-form.component';
+import { InsightPageComponent } from './insight-page/insight-page.component';
+import { TriviaPageComponent } from './trivia-page/trivia-page.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { EditTriviaFormComponent } from './edit-trivia-form/edit-trivia-form.com
     DeleteAccountComponent,
     EditStockFormComponent,
     EditInsightsFormComponent,
-    EditTriviaFormComponent
+    EditTriviaFormComponent,
+    InsightPageComponent,
+    TriviaPageComponent
   ],
   imports: [
     BrowserModule,

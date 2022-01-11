@@ -1,0 +1,13 @@
+<app-nav-bar></app-nav-bar>
+<div class="blog-container">
+    <iframe [src]="safeVideoUrl" allowfullscreen></iframe>
+    <div class="blog-item-width">
+    <h3 class="text-left blog-item">
+        {{ trivia?.title }}
+    </h3>
+    <p class="text-left blog-main">
+        {{ trivia?.description }}
+    </p>
+    </div>
+</div>
+<app-footer></app-footer>

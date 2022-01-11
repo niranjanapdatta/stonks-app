@@ -11,6 +11,8 @@ export class InsightService {
 
   private apiBaseUrl: String = environment.apiBaseUrl;
 
+  private insightToBeViewed: Insight = {};
+
   private insightToBeEdited: Insight = {};
 
   constructor(private http: HttpClient) { }
@@ -37,6 +39,14 @@ export class InsightService {
 
   getInsightToBeEdited(): Insight {
     return this.insightToBeEdited;
+  }
+
+  setInsightToBeViewed(insightToBeViewed: Insight): void {
+    this.insightToBeViewed = insightToBeViewed;
+  }
+
+  getInsightToBeViewed(): Insight {
+    return this.insightToBeViewed;
   }
 
 }
