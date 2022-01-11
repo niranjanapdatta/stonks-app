@@ -1,15 +1,74 @@
 <app-nav-bar></app-nav-bar>
 <div class="stock-page-container">
-    <div style="display: block;">
-        <canvas baseChart 
-          [datasets]="barChartData"
-          [labels]="barChartLabels"
-          [options]="barChartOptions"
-          [plugins]="barChartPlugins"
-          [legend]="barChartLegend"
-          [chartType]="barChartType">
-        </canvas>
+  <div class="d-flex justify-content-center">
+    <button class="btn btn-outline-primary btn-lg right-margin" type="button" (click)="showCloseChart()">Close</button>
+    <button class="btn btn-outline-primary btn-lg right-margin" type="button" (click)="showVolatilityChart()">Volatility</button>
+    <button class="btn btn-outline-primary btn-lg right-margin" type="button" (click)="showBetaChart()">Beta</button>
+    <button class="btn btn-outline-primary btn-lg right-margin" type="button" (click)="showPriceUpDownChart()">Up/ Down</button>
+    <button class="btn btn-outline-primary btn-lg right-margin" type="button" (click)="showAvgPriceUpDownChart()">Avg. Up/ Down</button>
+    <button class="btn btn-outline-primary btn-lg right-margin" type="button" (click)="showReturnsChart()">Returns</button>
+  </div>
+  <div style="display: block;" *ngIf="graphSelected == 0">
+          <canvas baseChart height="130em"
+            [datasets]="closeChartData"
+            [labels]="ChartLabels"
+            [options]="closeChartOptions"
+            [plugins]="ChartPlugins"
+            [legend]="ChartLegend"
+            [chartType]="closeChartType">
+          </canvas>
+  </div>
+  <div style="display: block;" *ngIf="graphSelected == 1">
+    <canvas baseChart height="130em"
+      [datasets]="volatilityChartData"
+      [labels]="ChartLabels"
+      [options]="volatilityChartOptions"
+      [plugins]="ChartPlugins"
+      [legend]="ChartLegend"
+      [chartType]="volatilityChartType">
+    </canvas>
 </div>
+<div style="display: block;" *ngIf="graphSelected == 2">
+  <canvas baseChart height="130em" 
+    [datasets]="betaChartData"
+    [labels]="ChartLabels"
+    [options]="betaChartOptions"
+    [plugins]="ChartPlugins"
+    [legend]="ChartLegend"
+    [chartType]="betaChartType">
+  </canvas>
+</div>
+<div style="display: block;" *ngIf="graphSelected == 3">
+  <canvas baseChart height="130em" 
+    [datasets]="priceUpDownChartData"
+    [labels]="ChartLabels"
+    [options]="priceUpDownChartOptions"
+    [plugins]="ChartPlugins"
+    [legend]="ChartLegend"
+    [chartType]="priceUpDownChartType">
+  </canvas>
+</div>
+<div style="display: block;" *ngIf="graphSelected == 4">
+  <canvas baseChart height="130em" 
+    [datasets]="avgPriceUpDownChartData"
+    [labels]="ChartLabels"
+    [options]="avgPriceUpDownChartOptions"
+    [plugins]="ChartPlugins"
+    [legend]="ChartLegend"
+    [chartType]="avgPriceUpDownChartType">
+  </canvas>
+</div>
+<div style="display: block;" *ngIf="graphSelected == 5">
+  <canvas baseChart height="130em" 
+    [datasets]="returnsChartData"
+    [labels]="ChartLabels"
+    [options]="returnsChartOptions"
+    [plugins]="ChartPlugins"
+    [legend]="ChartLegend"
+    [chartType]="returnsChartType">
+  </canvas>
+</div>
+<hr/>
 <h3>Stock Analysis</h3>
 <table class="table table-striped">
     <thead class="thead-dark">
