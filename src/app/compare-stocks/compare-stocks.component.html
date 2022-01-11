@@ -1,10 +1,3 @@
 <app-nav-bar></app-nav-bar>
-<ul class="list-group" *ngFor="let stockToCompare of stocksToCompare">
-    <li class="list-group-item d-flex justify-content-between align-items-center" 
-      [ngStyle]="{'background-color': stockToCompare.analysis?.[0]?.is_bullish ? '#90ee90' : '#ffcccb'}">
-      {{ stockToCompare.name }}
-      <span>{{ stockToCompare.analysis?.[0]?.close }}
-      </span>
-    </li>
-</ul>
+
 <app-footer></app-footer>

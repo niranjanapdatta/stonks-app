@@ -1,6 +1,6 @@
 <app-nav-bar></app-nav-bar>
 <div class="list-group" *ngFor="let trivia of trivias">
-    <div class="border-bottom link-item" (click)="viewTriviaAction(trivia)">
+    <div class="link-item" (click)="viewTriviaAction(trivia)">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">{{ trivia.title }}</h5>
       </div>

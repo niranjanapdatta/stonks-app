@@ -1,16 +1,18 @@
 <app-nav-bar></app-nav-bar>
 <button type="button" class="btn btn-primary" (click)="compareStocks()">Compare</button>
 <ul class="list-group" *ngFor="let stock of stocks">
-    <li class="list-group-item d-flex justify-content-between align-items-center" 
+  <div class="d-flex justify-content-between align-items-center">
+    <li class="list-group-item w-100 d-flex justify-content-between align-items-center" 
       [ngStyle]="{'background-color': stock.analysis?.[0]?.is_bullish ? '#90ee90' : '#ffcccb'}" (click)="viewStockAction(stock)">
       <small class="btn">{{ stock.name }}</small>
       <span>
         <small class="btn">₹ {{ stock.analysis?.[0]?.close }}</small>
-        <input type="checkbox" (click)="checkboxAction(stock, $event)" class="btn">
         <small class="btn btn btn-link" *ngIf="user.is_admin" (click)="editStockAction(stock)">Edit</small>
         <small class="btn btn-link" *ngIf="user.is_admin" (click)="deleteStockAction(stock)">Delete</small>
       </span>
     </li>
+    <input type="checkbox" (click)="checkboxAction(stock, $event)" style="width: 2em; height: 2em;" class="btn">
+  </div>
 </ul>
 
 <app-footer></app-footer>

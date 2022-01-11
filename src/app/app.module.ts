@@ -27,6 +27,7 @@ import { EditTriviaFormComponent } from './edit-trivia-form/edit-trivia-form.com
 import { InsightPageComponent } from './insight-page/insight-page.component';
 import { TriviaPageComponent } from './trivia-page/trivia-page.component';
 import { StockPageComponent } from './stock-page/stock-page.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { StockPageComponent } from './stock-page/stock-page.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,7 @@
 <app-nav-bar></app-nav-bar>
-<form class="form-horizontal" #deleteAccountForm="ngForm" (ngSubmit)="submitAction()">
+<form class="form-horizontal form-container" #deleteAccountForm="ngForm" (ngSubmit)="submitAction()">
 
+  <h1 class="text-center">Delete Account</h1>
     <div class="form-group">
         <label class="form-label" for="password">Password</label>
         <input type="password" class="form-control" id="password" name="password" [(ngModel)]="user.password" #password="ngModel" required>

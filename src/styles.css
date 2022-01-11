@@ -27,6 +27,13 @@ img, iframe {
     border: 0.1em solid #D3D3D3;
 }
 
+.form-container {
+    padding: 3em;
+    width: 55%;
+    margin: 0 auto;
+    border: 0.1em solid #D3D3D3;
+}
+
 .blog-item-width {
     margin: 0 auto;
     width: 85%;
@@ -78,8 +85,12 @@ img, iframe {
     color: blue !important;
 }
 
-.table-container {
+.stock-page-container {
     width: 90%;
     margin: 0 auto;
     border: 0.1em solid #D3D3D3;
+}
+
+h1 {
+    font-size: 3em !important;
 }

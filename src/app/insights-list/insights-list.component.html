@@ -1,6 +1,6 @@
 <app-nav-bar></app-nav-bar>
 <div class="list-group" *ngFor="let insight of insights">
-    <div class="border-bottom link-item" (click)="viewInsightAction(insight)">
+    <div class="link-item" (click)="viewInsightAction(insight)">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">{{ insight.title }}</h5>
         <small>{{ insight.timestamp?.toString()?.split('T')?.[0] }}</small>

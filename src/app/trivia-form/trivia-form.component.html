@@ -1,6 +1,7 @@
 <app-nav-bar></app-nav-bar>
-<form class="form-horizontal" #triviaForm="ngForm" (ngSubmit)="submitAction()">
+<form class="form-horizontal form-container" #triviaForm="ngForm" (ngSubmit)="submitAction()">
 
+    <h1 class="text-center">Add Trivia</h1>
     <div class="form-group">
       <label class="form-label" for="title">Title</label>
       <input type="text" class="form-control" id="title" name="title" [(ngModel)]="trivia.title" #title="ngModel" required minlength="2">

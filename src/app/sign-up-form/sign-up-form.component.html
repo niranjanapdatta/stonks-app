@@ -1,5 +1,6 @@
-<form class="form-horizontal" #signUpForm="ngForm" (ngSubmit)="submitAction()">
+<form class="form-horizontal form-container" #signUpForm="ngForm" (ngSubmit)="submitAction()">
 
+  <h1 class="text-center">Sign Up</h1>
     <div class="form-group">
       <label class="form-label" for="username">Username</label>
       <input type="text" class="form-control" id="username" name="username" [(ngModel)]="user.username" #username="ngModel" required>

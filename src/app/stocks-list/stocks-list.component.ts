@@ -47,8 +47,13 @@ export class StocksListComponent implements OnInit {
   }
 
   compareStocks(): void {
-    this.stockService.setStocksToCompare(this.stocksToCompare);
-    this.router.navigate(['/compare']);
+    if(this.stocksToCompare.length > 1 && this.stocksToCompare.length < 5) {
+      this.stockService.setStocksToCompare(this.stocksToCompare);
+      this.router.navigate(['/compare']);
+    }
+    else {
+      alert("Select 2 - 4 stocks in order to compare!");
+    }
   }
 
   editStockAction(stockToBeEdited: Stock): void {

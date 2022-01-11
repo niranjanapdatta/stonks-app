@@ -1,6 +1,7 @@
 <app-nav-bar></app-nav-bar>
-<form class="form-horizontal" #insightForm="ngForm" (ngSubmit)="submitAction()">
+<form class="form-horizontal form-container" #insightForm="ngForm" (ngSubmit)="submitAction()">
 
+    <h1 class="text-center">Publish Insight</h1>
     <div class="form-group">
       <label class="form-label" for="title">Title</label>
       <input type="text" class="form-control" id="title" name="title" [(ngModel)]="insight.title" #title="ngModel" required minlength="5">

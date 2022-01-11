@@ -1,6 +1,7 @@
 <app-nav-bar></app-nav-bar>
-<form class="form-horizontal" #editStockForm="ngForm" (ngSubmit)="submitAction()">
+<form class="form-horizontal form-container" #editStockForm="ngForm" (ngSubmit)="submitAction()">
 
+    <h1 class="text-center">Edit Stock</h1>
     <div class="form-group">
       <label class="form-label" for="_id">Symbol</label>
       <input type="text" class="form-control" id="_id" name="_id" [(ngModel)]="stock._id" #_id="ngModel" required disabled>
