@@ -77,3 +77,9 @@ img, iframe {
 .link-item:hover {
     color: blue !important;
 }
+
+.table-container {
+    width: 90%;
+    margin: 0 auto;
+    border: 0.1em solid #D3D3D3;
+}

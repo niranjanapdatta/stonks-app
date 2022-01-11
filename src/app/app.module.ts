@@ -26,6 +26,7 @@ import { EditInsightsFormComponent } from './edit-insights-form/edit-insights-fo
 import { EditTriviaFormComponent } from './edit-trivia-form/edit-trivia-form.component';
 import { InsightPageComponent } from './insight-page/insight-page.component';
 import { TriviaPageComponent } from './trivia-page/trivia-page.component';
+import { StockPageComponent } from './stock-page/stock-page.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { TriviaPageComponent } from './trivia-page/trivia-page.component';
     EditInsightsFormComponent,
     EditTriviaFormComponent,
     InsightPageComponent,
-    TriviaPageComponent
+    TriviaPageComponent,
+    StockPageComponent
   ],
   imports: [
     BrowserModule,

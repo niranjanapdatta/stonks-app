@@ -12,6 +12,8 @@ export class StockFormComponent implements OnInit {
 
   stock: Stock = {};
 
+  loadingText: String | undefined;
+
   constructor(
     private stockService: StockService,
     private router: Router
@@ -21,13 +23,14 @@ export class StockFormComponent implements OnInit {
   }
 
   submitAction(): void {
+    this.loadingText = "Communicating with the server, please wait.....";
     if(this.stock.name == undefined)
       this.stock.name = this.stock._id;
     this.stockService.addSymbol(this.stock).subscribe(res => {
       switch(res) {
       case "exists": alert("The stock you are trying to add already exists!");
                     break;
-      case "standard": alert("The market standard you have entered does not exist!");
+      case "standard": alert("The market standard you have entered does not exist! Currently available market standards: NIFTY, BANKNIFTY");
                     break;
       case "success": alert("Stock has been successfully added!");
                     this.router.navigate(['/home']);
@@ -37,6 +40,8 @@ export class StockFormComponent implements OnInit {
       default: alert("Oops! There was a problem while creating the trivia. Please try again later.");
                     break;
     }
+    this.loadingText = undefined;
+    this.stock.name = undefined;
     });
   }
 

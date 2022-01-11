@@ -15,6 +15,7 @@ import { InsightsListComponent } from './insights-list/insights-list.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
 import { StockFormComponent } from './stock-form/stock-form.component';
+import { StockPageComponent } from './stock-page/stock-page.component';
 import { StocksListComponent } from './stocks-list/stocks-list.component';
 import { TriviaFormComponent } from './trivia-form/trivia-form.component';
 import { TriviaListComponent } from './trivia-list/trivia-list.component';
@@ -40,7 +41,8 @@ const routes: Routes = [
   { path: "editTrivia", component: EditTriviaFormComponent },
   { path: "signup", component: SignUpFormComponent },
   { path: 'insight', component: InsightPageComponent },
-  { path: 'triviaPage', component: TriviaPageComponent }
+  { path: 'triviaPage', component: TriviaPageComponent },
+  { path: 'stock', component: StockPageComponent }
 ];
 
 @NgModule({

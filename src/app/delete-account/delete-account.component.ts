@@ -29,8 +29,8 @@ export class DeleteAccountComponent implements OnInit {
       switch(res) {
         case "username": alert("User by that username does not exist!");
                       break;
-        case "admin": alert("Cannot delete admin user!");
-                      break;
+        // case "admin": alert("Cannot delete admin user!");
+        //               break;
         case "incorrect": alert("Incorrect password");
                       break;
         case "success": alert("Account has been deleted successfully");

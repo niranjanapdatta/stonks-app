@@ -1,5 +1,5 @@
 <app-nav-bar></app-nav-bar>
-<form class="form-horizontal" #signUpForm="ngForm" (ngSubmit)="submitAction()">
+<form class="form-horizontal" #stockForm="ngForm" (ngSubmit)="submitAction()">
 
     <div class="form-group">
       <label class="form-label" for="_id">Symbol</label>
@@ -47,8 +47,12 @@
         <textarea class="form-control" id="about" name="about" rows="5" [(ngModel)]="stock.about" #about="ngModel"></textarea>
     </div>
 
+    <div class="alert" style="color: blue !important;">
+        {{ loadingText }}
+    </div>
+
     <div class="text-center">
-        <button type="submit" class="btn btn-primary" [disabled]='!signUpForm.valid'>Add</button>
+        <button type="submit" class="btn btn-primary" [disabled]='!stockForm.valid && !loadingText'>Add</button>
     </div>
 
 </form>

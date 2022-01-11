@@ -5,8 +5,8 @@ export interface Stock {
     name?: String,
     is_index?: Boolean,
     market_standard?: String,
-    expense_ratio?: Number,
-    dividend?: Number,
+    expense_ratio?: number,
+    dividend?: number,
     series?: String,
     about?: String,
     analysis? : StockAnalysis[]

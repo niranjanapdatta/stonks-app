@@ -1,1 +1,55 @@
-<p>edit-stock-form works!</p>
+<app-nav-bar></app-nav-bar>
+<form class="form-horizontal" #editStockForm="ngForm" (ngSubmit)="submitAction()">
+
+    <div class="form-group">
+      <label class="form-label" for="_id">Symbol</label>
+      <input type="text" class="form-control" id="_id" name="_id" [(ngModel)]="stock._id" #_id="ngModel" required disabled>
+    </div>
+    <div *ngIf="_id.invalid && (_id.dirty || _id.touched)" class="alert">
+        <div *ngIf="_id.errors?.['required']">
+            Symbol is required
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label" for="market_standard">Market Standard</label>
+        <input type="text" class="form-control" id="market_standard" name="market_standard" [(ngModel)]="stock.market_standard" #market_standard="ngModel" disabled>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label" for="name">Name</label>
+        <input type="text" class="form-control" id="name" name="name" [(ngModel)]="stock.name" #name="ngModel">
+    </div>
+
+    <div class="form-group">
+        <label class="form-label" for="expense_ratio">Expense Ratio</label>
+        <input type="text" class="form-control" id="expense_ratio" name="expense_ratio" [(ngModel)]="stock.expense_ratio" #expense_ratio="ngModel" pattern="^(0(\.[0-9]{1,4})?|1(\.0{1,4})?)$">
+    </div>
+    <div *ngIf="expense_ratio.errors?.['pattern']" class="alert">
+        Valid value for expense ratio is 0 - 1
+    </div>
+
+    <div class="form-group">
+        <label class="form-label" for="dividend">Dividend</label>
+        <input type="text" class="form-control" id="dividend" name="dividend" [(ngModel)]="stock.dividend" #dividend="ngModel" pattern="^(0(\.[0-9]{1,4})?|1(\.0{1,4})?)$">
+    </div>
+    <div *ngIf="dividend.errors?.['pattern']" class="alert">
+        Valid value for Dividend is 0 - 1
+    </div>
+
+    <!-- <div class="form-group">
+        <label class="form-label" for="series">Series</label>
+        <input type="text" class="form-control" id="series" name="series" [(ngModel)]="stock.series" #series="ngModel">
+    </div> -->
+
+    <div class="form-group">
+        <label class="form-label" for="about">About</label>
+        <textarea class="form-control" id="about" name="about" rows="5" [(ngModel)]="stock.about" #about="ngModel"></textarea>
+    </div>
+
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary" [disabled]='!editStockForm.valid'>Add</button>
+    </div>
+
+</form>
+<app-footer></app-footer>

@@ -15,7 +15,7 @@ export class StocksListComponent implements OnInit {
 
   stocks: Stock[] | undefined;
 
-  stockData: Stock | undefined;
+  stockToBeViewed: Stock = {};
 
   stocksToCompare: Stock[] = [];
 
@@ -28,16 +28,13 @@ export class StocksListComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.stockService.getData().subscribe((res) => {
-      const niftyData: Stock[] = res[0];
-      const bankNiftyData: Stock[] = res[1];
-      this.stocks = niftyData.concat(bankNiftyData);
-    });
+    this.getStocksData();
     this.user = this.userService.getUserData();
   }
 
-  stockDisplay(stockData: Stock): void {
-    this.stockData = stockData;
+  viewStockAction(stockToBeViewed: Stock): void {
+    this.stockService.setStockToBeViewed(stockToBeViewed);
+    this.router.navigate(['/stock']);
   }
 
   checkboxAction(stock: Stock, event: any): void {
@@ -52,6 +49,31 @@ export class StocksListComponent implements OnInit {
   compareStocks(): void {
     this.stockService.setStocksToCompare(this.stocksToCompare);
     this.router.navigate(['/compare']);
+  }
+
+  editStockAction(stockToBeEdited: Stock): void {
+    this.stockService.setStockToBeEdited(stockToBeEdited);
+    this.router.navigate(['/editStock']);
+  }
+
+  deleteStockAction(stockToBeDeleted: Stock): void {
+    this.stockService.deleteStock(stockToBeDeleted).subscribe(res => {
+      switch(res) {
+        case "success": alert("Stock has been deleted successfully!");
+                        break;
+        default: alert("Oops! There was a problem while deleting the Stock. Please try again later.");
+                break;
+      }
+      this.getStocksData();
+    });
+  }
+
+  getStocksData(): void {
+    this.stockService.getData().subscribe((res) => {
+      const niftyData: Stock[] = res[0];
+      const bankNiftyData: Stock[] = res[1];
+      this.stocks = niftyData.concat(bankNiftyData);
+    });
   }
 
 }

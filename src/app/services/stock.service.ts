@@ -13,6 +13,10 @@ export class StockService {
 
   private stocks: Stock[] = [];
 
+  private stockToBeEdited: Stock = {};
+
+  private stockToBeViewed: Stock = {};
+
   constructor(private http: HttpClient) { }
 
   getData(): Observable<any[]> {
@@ -39,6 +43,22 @@ export class StockService {
 
   deleteStock(stock: Stock): Observable<any> {
     return this.http.delete(`${this.apiBaseUrl}/delete_symbol`, {body: stock, responseType: 'text'});
+  }
+
+  setStockToBeEdited(stockToBeEdited: Stock): void {
+    this.stockToBeEdited = stockToBeEdited;
+  }
+
+  getStockToBeEdited(): Stock {
+    return this.stockToBeEdited;
+  }
+
+  setStockToBeViewed(stockToBeViewed: Stock): void {
+    this.stockToBeViewed = stockToBeViewed;
+  }
+
+  getStockToBeViewed(): Stock {
+    return this.stockToBeViewed;
   }
 
 }
