@@ -16,14 +16,14 @@
 
     <div class="form-group">
         <label class="form-label" for="description">Description</label>
-        <textarea class="form-control" id="description" name="description" rows="5" [(ngModel)]="trivia.description" #description="ngModel" required minlength="30"></textarea>
+        <textarea class="form-control" id="description" name="description" rows="5" [(ngModel)]="trivia.description" #description="ngModel" required minlength="10"></textarea>
     </div>
     <div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert">
         <div *ngIf="description.errors?.['required']">
             Description is required
         </div>
         <div *ngIf="description.errors?.['minlength']">
-            Description must be at least 30 characters long
+            Description must be at least 10 characters long
         </div>
     </div>
 

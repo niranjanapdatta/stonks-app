@@ -1,6 +1,7 @@
 <app-nav-bar></app-nav-bar>
 <div class="blog-container">
-    <iframe [src]="safeVideoUrl" allowfullscreen></iframe>
+    <div *ngIf="!trivia.video_url" class="margin-top-no-video"></div>
+    <iframe *ngIf="trivia.video_url" [src]="safeVideoUrl" allowfullscreen></iframe>
     <div class="blog-item-width">
     <h3 class="text-left blog-item">
         {{ trivia?.title }}

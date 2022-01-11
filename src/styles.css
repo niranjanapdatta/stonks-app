@@ -16,6 +16,10 @@ img, iframe {
     height: 20em;
 }
 
+.margin-top-no-video {
+    margin-top: 1em;
+}
+
 .blog-container {
     width: 55%;
     margin: 0 auto;
