@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Compare } from '../models/compare';
 import { Stock } from '../models/stock';
 import { User } from '../models/user';
 import { StockService } from '../services/stock.service';
@@ -26,6 +27,8 @@ export class StocksListComponent implements OnInit {
   stocksForDisplay: Stock[] = [];
 
   areNoMatchesFound: boolean = false;
+  
+  addedToCompare: Map<String, boolean> = new Map();
 
   user: User = {};
 
@@ -36,7 +39,15 @@ export class StocksListComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.getStocksData();
+    this.stockService.getData().subscribe((res) => {
+      const niftyData: Stock[] = res[0];
+      const bankNiftyData: Stock[] = res[1];
+      this.stocks = niftyData.concat(bankNiftyData);
+      this.stocksForDisplay = this.stocks;
+      for(let stock of this.stocks)
+        if(stock._id != undefined)
+          this.addedToCompare.set(stock._id, false);
+    });
     this.user = this.userService.getUserData();
   }
 
@@ -45,13 +56,19 @@ export class StocksListComponent implements OnInit {
     this.router.navigate(['/stock']);
   }
 
-  checkboxAction(stock: Stock, event: any): void {
-    if(event.target.checked)
-      this.stocksToCompare.push(stock);
-    else
-      for(var i = 0; i < this.stocksToCompare.length; i++)
-        if (this.stocksToCompare[i] === stock)
-          this.stocksToCompare.splice(i, 1);
+  compareAction(stock: Stock): void {
+    if(stock._id) {
+      if(!this.addedToCompare.get(stock._id)) {
+        this.addedToCompare.set(stock._id, true);
+        this.stocksToCompare.push(stock);
+      }
+      else {
+        this.addedToCompare.set(stock._id, false);
+        for(var i = 0; i < this.stocksToCompare.length; i++)
+          if (this.stocksToCompare[i] === stock)
+            this.stocksToCompare.splice(i, 1);
+      }
+    }
   }
 
   compareStocks(): void {
@@ -74,21 +91,15 @@ export class StocksListComponent implements OnInit {
       switch(res) {
         case "success": alert("Stock has been deleted successfully!");
                         break;
+        case "standard": alert("Market Standards cannot be deleted!");
+                        break;
         default: alert("Oops! There was a problem while deleting the Stock. Please try again later.");
                 break;
       }
-      this.getStocksData();
-    });
-  }
-
-  getStocksData(): void {
-    this.stockService.getData().subscribe((res) => {
-      const niftyData: Stock[] = res[0];
-      const bankNiftyData: Stock[] = res[1];
-      this.stocks = niftyData.concat(bankNiftyData);
       this.stocksForDisplay = this.stocks;
     });
   }
+
 
   searchAction(): void {
     this.areNoMatchesFound = false;
@@ -103,7 +114,7 @@ export class StocksListComponent implements OnInit {
   }
 
   refreshStocks(): void {
-    this.getStocksData();
+    this.stocksForDisplay = this.stocks;
   }
 
 }

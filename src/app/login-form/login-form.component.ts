@@ -38,7 +38,6 @@ export class LoginFormComponent implements OnInit {
         default: alert("Oops! There was a problem while logging in. Please try again later.");
                       break;
       }
-      this.user = {}; // Clear the form
     });
   }
 

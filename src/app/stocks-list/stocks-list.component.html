@@ -18,9 +18,18 @@
         <small class="btn">{{ stock.market_standard }}</small>
       </span>
     </li>
-    <input type="checkbox" (click)="checkboxAction(stock, $event)" style="width: 2em; height: 2em;" class="btn">
     <small class="btn btn btn-link" *ngIf="user.is_admin" (click)="editStockAction(stock)">Edit</small>
     <small class="btn btn-link" *ngIf="user.is_admin" (click)="deleteStockAction(stock)">Delete</small>
+    <small class="btn btn btn-link" (click)="compareAction(stock)" >
+      <div *ngIf="stock._id">
+      <div *ngIf="!addedToCompare.get(stock._id)">
+        <button type="button" class="btn btn-primary mr-sm-2 fa fa-plus" style="font-size:1.4em;"></button>
+      </div>
+      <div *ngIf="addedToCompare.get(stock._id)">
+        <button type="button" class="btn btn-primary mr-sm-2 fa fa-remove" style="font-size:1.4em;"></button>
+      </div>
+    </div>
+    </small>
   </div>
 </ul>
 <div *ngIf="areNoMatchesFound" class="alert">

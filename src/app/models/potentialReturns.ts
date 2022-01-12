@@ -3,4 +3,4 @@ export interface PotentialReturns {
     dividend?: number,
     expenses?: number,
     returns?: number
-}
+};
