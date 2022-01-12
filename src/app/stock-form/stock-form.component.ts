@@ -24,6 +24,10 @@ export class StockFormComponent implements OnInit {
 
   submitAction(): void {
     this.loadingText = "Communicating with the server, please wait.....";
+    if(this.stock.name == "")
+      this.stock.name = undefined;
+    if(this.stock.market_standard == "")
+      this.stock.market_standard = undefined;
     if(this.stock.name == undefined)
       this.stock.name = this.stock._id;
     this.stockService.addSymbol(this.stock).subscribe(res => {
