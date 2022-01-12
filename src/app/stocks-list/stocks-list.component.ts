@@ -13,11 +13,19 @@ import { UserService } from '../services/user.service';
 })
 export class StocksListComponent implements OnInit {
 
-  stocks: Stock[] | undefined;
+  stocks: Stock[] = [];
+
+  searchMatches: Stock[] = [];
+
+  searchText: string = "";
 
   stockToBeViewed: Stock = {};
 
   stocksToCompare: Stock[] = [];
+
+  stocksForDisplay: Stock[] = [];
+
+  areNoMatchesFound: boolean = false;
 
   user: User = {};
 
@@ -78,7 +86,24 @@ export class StocksListComponent implements OnInit {
       const niftyData: Stock[] = res[0];
       const bankNiftyData: Stock[] = res[1];
       this.stocks = niftyData.concat(bankNiftyData);
+      this.stocksForDisplay = this.stocks;
     });
+  }
+
+  searchAction(): void {
+    this.areNoMatchesFound = false;
+    this.searchMatches = [];
+    for(let stock of this.stocks)
+      if(stock._id?.toLowerCase().includes(this.searchText.toLowerCase()) || stock.name?.toLowerCase().includes(this.searchText.toLowerCase())
+        || stock.market_standard?.toLowerCase().includes(this.searchText.toLowerCase()))
+        this.searchMatches.push(stock);
+    this.stocksForDisplay = this.searchMatches;
+    if(this.stocksForDisplay.length == 0)
+      this.areNoMatchesFound = true;
+  }
+
+  refreshStocks(): void {
+    this.getStocksData();
   }
 
 }

@@ -1,12 +1,21 @@
 <app-nav-bar></app-nav-bar>
-<button type="button" class="btn btn-primary" (click)="compareStocks()">Compare</button>
-<ul class="list-group" *ngFor="let stock of stocks">
+<nav class="navbar navbar-light justify-content-end">
+  <form class="form-inline">
+    <input class="form-control mr-sm-1" type="search" placeholder="Search" aria-label="Search" name="searchText" [(ngModel)]="searchText" style="width:30em;">
+    <button type="button" class="btn btn-primary mr-sm-2 fa fa-refresh" style="font-size:1.4em;" (click)="refreshStocks()"></button>
+    <button class="btn btn-outline-success my-2 my-sm-0 mr-sm-4 fa fa-search" style="font-size:1.4em;" (click)="searchAction()"></button>
+  </form>
+  <button type="button" class="btn btn-primary mr-sm-2 fa fa-filter" style="font-size:1.4em;"></button>
+  <button type="button" class="btn btn-primary" (click)="compareStocks()">Compare</button>
+</nav>
+<ul class="list-group" *ngFor="let stock of stocksForDisplay">
   <div class="d-flex justify-content-between align-items-center">
     <li class="list-group-item w-100 d-flex justify-content-between align-items-center" 
       [ngStyle]="{'background-color': stock.analysis?.[0]?.is_bullish ? '#90ee90' : '#ffcccb'}" (click)="viewStockAction(stock)">
       <small class="btn">{{ stock.name }}</small>
       <span>
         <small class="btn">₹ {{ stock.analysis?.[0]?.close }}</small>
+        <small class="btn">{{ stock.market_standard }}</small>
       </span>
     </li>
     <input type="checkbox" (click)="checkboxAction(stock, $event)" style="width: 2em; height: 2em;" class="btn">
@@ -14,5 +23,8 @@
     <small class="btn btn-link" *ngIf="user.is_admin" (click)="deleteStockAction(stock)">Delete</small>
   </div>
 </ul>
+<div *ngIf="areNoMatchesFound" class="alert">
+  <h5>No matches found! Please enter a valid stock symbol or stock name or market standard.</h5>
+</div>
 
 <app-footer></app-footer>

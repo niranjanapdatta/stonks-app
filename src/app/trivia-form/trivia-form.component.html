@@ -29,8 +29,12 @@
     </div>
 
     <div class="form-group">
-        <label class="form-label" for="video_url">Video Link</label>
-        <input type="text" class="form-control" id="video_url" name="video_url" [(ngModel)]="trivia.video_url">
+        <label class="form-label" for="video_url">YouTube Video Embed URL</label>
+        <input type="text" class="form-control" id="video_url" name="video_url" [(ngModel)]="trivia.video_url" #video_url="ngModel" 
+            pattern="^[h][t][t][p][s][:][\/][\/][w][w][w][.][y][o][u][t][u][b][e][.][c][o][m][\/][e][m][b][e][d][\/][A-Za-z0-9-_*]{11}$">
+    </div>
+    <div *ngIf="video_url.errors?.['pattern']" class="alert">
+        Invalid YouTube Video Embed URL. Should follow the format: https://www.youtube.com/embed/&lt;Video id: 11 characters&gt;
     </div>
 
     <div class="text-center">

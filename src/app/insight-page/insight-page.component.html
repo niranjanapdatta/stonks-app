@@ -1,6 +1,6 @@
 <app-nav-bar></app-nav-bar>
 <div class="blog-container">
-    <img [src]="insight?.image_link"/>
+    <img [src]="insight?.image_link" onerror="this.style.display='none'"/>
     <div  class="blog-item-width">
     <h3 class="text-left">
         {{ insight?.title }}
