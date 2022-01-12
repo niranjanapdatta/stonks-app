@@ -39,15 +39,7 @@ export class StocksListComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.stockService.getData().subscribe((res) => {
-      const niftyData: Stock[] = res[0];
-      const bankNiftyData: Stock[] = res[1];
-      this.stocks = niftyData.concat(bankNiftyData);
-      this.stocksForDisplay = this.stocks;
-      for(let stock of this.stocks)
-        if(stock._id != undefined)
-          this.addedToCompare.set(stock._id, false);
-    });
+    this.getStocksData();
     this.user = this.userService.getUserData();
   }
 
@@ -96,7 +88,7 @@ export class StocksListComponent implements OnInit {
         default: alert("Oops! There was a problem while deleting the Stock. Please try again later.");
                 break;
       }
-      this.stocksForDisplay = this.stocks;
+      this.getStocksData();
     });
   }
 
@@ -115,6 +107,18 @@ export class StocksListComponent implements OnInit {
 
   refreshStocks(): void {
     this.stocksForDisplay = this.stocks;
+  }
+
+  getStocksData(): void {
+    this.stockService.getData().subscribe((res) => {
+      const niftyData: Stock[] = res[0];
+      const bankNiftyData: Stock[] = res[1];
+      this.stocks = niftyData.concat(bankNiftyData);
+      this.stocksForDisplay = this.stocks;
+      for(let stock of this.stocks)
+        if(stock._id != undefined)
+          this.addedToCompare.set(stock._id, false);
+    });
   }
 
 }

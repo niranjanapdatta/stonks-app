@@ -26,16 +26,20 @@
         <label class="form-label" for="expense_ratio">Expense Ratio</label>
         <input type="text" class="form-control" id="expense_ratio" name="expense_ratio" [(ngModel)]="stock.expense_ratio" #expense_ratio="ngModel" pattern="^(0(\.[0-9]{1,4})?|1(\.0{1,4})?)$">
     </div>
-    <div *ngIf="expense_ratio.errors?.['pattern']" class="alert">
-        Valid value for expense ratio is 0 - 1
+    <div *ngIf="_id.invalid && (_id.dirty || _id.touched)" class="alert">
+        <div *ngIf="expense_ratio.errors?.['pattern']" class="alert">
+            Valid value for expense ratio is 0 - 1
+        </div>
     </div>
 
     <div class="form-group">
         <label class="form-label" for="dividend">Dividend</label>
         <input type="text" class="form-control" id="dividend" name="dividend" [(ngModel)]="stock.dividend" #dividend="ngModel" pattern="^(0(\.[0-9]{1,4})?|1(\.0{1,4})?)$">
     </div>
-    <div *ngIf="dividend.errors?.['pattern']" class="alert">
-        Valid value for Dividend is 0 - 1
+    <div *ngIf="_id.invalid && (_id.dirty || _id.touched)" class="alert">
+        <div *ngIf="dividend.errors?.['pattern']" class="alert">
+            Valid value for Dividend is 0 - 1
+        </div>
     </div>
 
     <!-- <div class="form-group">
