@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ChartType, ChartDataSets, ChartOptions } from 'chart.js';
 import { Label } from 'ng2-charts';
+import { Insight } from '../models/insight';
 import { PotentialReturns } from '../models/potentialReturns';
 import { Stock } from '../models/stock';
+import { InsightService } from '../services/insight.service';
 import { StockService } from '../services/stock.service';
 
 @Component({
@@ -23,6 +26,8 @@ export class StockPageComponent implements OnInit {
   fy_returns: PotentialReturns = {};
 
   graphSelected: number = 0;
+
+  insights: Insight[] = [];
 
   showCloseChart(): void {
     this.graphSelected = 0;
@@ -125,11 +130,16 @@ export class StockPageComponent implements OnInit {
   public returnsChartData: ChartDataSets[] = [];
 
   constructor(
-    private stockService: StockService
+    private stockService: StockService,
+    private insightService: InsightService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.stock = this.stockService.getStockToBeViewed();
+
+    if(this.stock._id)
+      this.insightService.getInsightsForStock(this.stock._id).subscribe((res) => this.insights = res);
 
     this.sm_returns = this.stockService.calculateReturns(this.stock.analysis?.[0]?.close, 
       this.stock.analysis?.[0]?.sm_close, 
@@ -212,6 +222,11 @@ export class StockPageComponent implements OnInit {
               this.oy_returns.returns, 
               this.sm_returns.returns], label: "Returns (₹)"}
     ];
+  }
+
+  viewInsightAction(insightToBeViewed: Insight): void {
+    this.insightService.setInsightToBeViewed(insightToBeViewed);
+    this.router.navigate(['/insight']);
   }
 
 }

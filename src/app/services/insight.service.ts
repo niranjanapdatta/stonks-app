@@ -49,4 +49,8 @@ export class InsightService {
     return this.insightToBeViewed;
   }
 
+  getInsightsForStock(stockSymbol: String): Observable<Insight[]> {
+    return this.http.get<Insight[]>(`${this.apiBaseUrl}/articles_for/` + stockSymbol);
+  }
+
 }

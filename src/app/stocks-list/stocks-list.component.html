@@ -5,7 +5,7 @@
     <button type="button" class="btn btn-primary mr-sm-2 fa fa-refresh" style="font-size:1.4em;" (click)="refreshStocks()"></button>
     <button class="btn btn-outline-success my-2 my-sm-0 mr-sm-4 fa fa-search" style="font-size:1.4em;" (click)="searchAction()"></button>
   </form>
-  <button type="button" class="btn btn-primary mr-sm-2 fa fa-filter" style="font-size:1.4em;"></button>
+  <!-- <button type="button" class="btn btn-primary mr-sm-2 fa fa-filter" style="font-size:1.4em;"></button> -->
   <button type="button" class="btn btn-primary" (click)="compareStocks()">Compare</button>
 </nav>
 <ul class="list-group" *ngFor="let stock of stocksForDisplay">
@@ -18,8 +18,8 @@
         <small class="btn">{{ stock.market_standard }}</small>
       </span>
     </li>
-    <small class="btn btn btn-link" *ngIf="user.is_admin" (click)="editStockAction(stock)">Edit</small>
-    <small class="btn btn-link" *ngIf="user.is_admin" (click)="deleteStockAction(stock)">Delete</small>
+    <small type="button" class="btn btn-primary fa fa-pencil mr-sm-2" *ngIf="user.is_admin" (click)="editStockAction(stock)" style="font-size:1.4em;"></small>
+    <small type="button" class="btn btn-primary fa fa-trash mr-sm-2" *ngIf="user.is_admin" (click)="deleteStockAction(stock)" style="font-size:1.4em;"></small>
     <small class="btn btn btn-link" (click)="compareAction(stock)" >
       <div *ngIf="stock._id">
       <div *ngIf="!addedToCompare.get(stock._id)">

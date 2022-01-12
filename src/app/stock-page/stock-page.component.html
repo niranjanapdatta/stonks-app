@@ -229,6 +229,15 @@
         <td>{{ stock.about }}</td>
       </tr>
     </tbody>
-</table>
-</div>
+  </table>
+  <hr/>
+  <h3>Stock Related Insights</h3>
+  <div class="list-group" *ngFor="let insight of insights">
+    <div class="link-item-small">
+      <div class="d-flex w-100 justify-content-between" (click)="viewInsightAction(insight)">
+        <h5 class="mb-1">{{ insight.title }}</h5>
+        <small>{{ insight.timestamp?.toString()?.split('T')?.[0] }}</small>
+      </div>
+    </div>
+  </div>
 <app-footer></app-footer>
