@@ -102,6 +102,10 @@ img, iframe {
     color: white !important;
 }
 
+.btn-hover-red {
+    color: red !important;
+}
+
 .stock-page-container {
     width: 90%;
     margin: 0 auto;

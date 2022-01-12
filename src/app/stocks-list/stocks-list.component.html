@@ -19,14 +19,14 @@
       </span>
     </li>
     <small type="button" class="btn btn-primary fa fa-pencil mr-sm-2" *ngIf="user.is_admin" (click)="editStockAction(stock)" style="font-size:1.4em;"></small>
-    <small type="button" class="btn btn-primary fa fa-trash mr-sm-2" *ngIf="user.is_admin" (click)="deleteStockAction(stock)" style="font-size:1.4em;"></small>
+    <small type="button" class="btn btn-danger fa fa-trash mr-sm-2" *ngIf="user.is_admin" (click)="deleteStockAction(stock)" style="font-size:1.4em;"></small>
     <small class="btn btn btn-link" (click)="compareAction(stock)" >
       <div *ngIf="stock._id">
       <div *ngIf="!addedToCompare.get(stock._id)">
         <button type="button" class="btn btn-primary mr-sm-2 fa fa-plus" style="font-size:1.4em;"></button>
       </div>
       <div *ngIf="addedToCompare.get(stock._id)">
-        <button type="button" class="btn btn-primary mr-sm-2 fa fa-remove" style="font-size:1.4em;"></button>
+        <button type="button" class="btn btn-danger mr-sm-2 fa fa-remove" style="font-size:1.4em;"></button>
       </div>
     </div>
     </small>

@@ -21,6 +21,9 @@
         <li class="nav-item" *ngIf="user.is_admin">
           <a class="nav-link btn-outline-primary" routerLink="/addItems">Add Items</a>
         </li>
+        <li class="nav-item" *ngIf="user.is_admin">
+          <a class="nav-link btn-outline-primary" routerLink="/users">Users</a>
+        </li>
       </ul>
       <!-- <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

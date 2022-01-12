@@ -72,12 +72,12 @@ export class StocksListComponent implements OnInit {
   }
 
   compareStocks(): void {
-    if(this.stocksToCompare.length > 1 && this.stocksToCompare.length < 5) {
+    if(this.stocksToCompare.length > 1 && this.stocksToCompare.length < 6) {
       this.stockService.setStocksToCompare(this.stocksToCompare);
       this.router.navigate(['/compare']);
     }
     else {
-      alert("Select 2 - 4 stocks in order to compare!");
+      alert("Select 2 - 5 stocks in order to compare!");
     }
   }
 

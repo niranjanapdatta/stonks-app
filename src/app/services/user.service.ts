@@ -39,4 +39,20 @@ export class UserService {
     return this.http.delete(`${this.apiBaseUrl}/delete_user`, {body: user, responseType: 'text'});
   }
 
+  getUsers(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiBaseUrl}/users`);
+  }
+
+  makeAdmin(username: String): Observable<any> {
+    return this.http.post(`${this.apiBaseUrl}/users/makeAdmin`, { "username": username }, {responseType: 'text'});
+  }
+
+  removeAdminStatus(username: String): Observable<any> {
+    return this.http.post(`${this.apiBaseUrl}/users/removeAdminStatus`, { "username": username }, {responseType: 'text'});
+  }
+
+  deleteUser(id: String): Observable<any> {
+    return this.http.delete(`${this.apiBaseUrl}/users/delete/` + id, {responseType: 'text'});
+  }
+
 }

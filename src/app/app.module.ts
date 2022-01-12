@@ -28,6 +28,7 @@ import { InsightPageComponent } from './insight-page/insight-page.component';
 import { TriviaPageComponent } from './trivia-page/trivia-page.component';
 import { StockPageComponent } from './stock-page/stock-page.component';
 import { ChartsModule } from 'ng2-charts';
+import { UsersListComponent } from './users-list/users-list.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { ChartsModule } from 'ng2-charts';
     EditTriviaFormComponent,
     InsightPageComponent,
     TriviaPageComponent,
-    StockPageComponent
+    StockPageComponent,
+    UsersListComponent
   ],
   imports: [
     BrowserModule,

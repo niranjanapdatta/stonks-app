@@ -9,7 +9,7 @@
       <p class="mb-1">{{ insight.summaryForDisplay }}</p>
     </div>
       <small class="btn btn-link fa fa-pencil mr-sm-2 btn-hover" (click)="editInsightAction(insight)" *ngIf="user.is_admin"></small>
-      <small class="btn btn-link fa fa-trash mr-sm-2 btn-hover" (click)="deleteInsightAction(insight)" *ngIf="user.is_admin"></small>
+      <small class="btn btn-link fa fa-trash mr-sm-2 btn-hover-red" (click)="deleteInsightAction(insight)" *ngIf="user.is_admin"></small>
     </div>
 </div>
 <app-footer></app-footer>

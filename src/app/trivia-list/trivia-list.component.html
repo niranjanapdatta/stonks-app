@@ -8,7 +8,7 @@
       <p class="mb-1">{{ trivia.descriptionForDisplay }}</p>
       </div>
       <small class="btn btn-link fa fa-pencil mr-sm-2 btn-hover" (click)="editTriviaAction(trivia)" *ngIf="user.is_admin"></small>
-      <small class="btn btn-link fa fa-trash mr-sm-2 btn-hover" (click)="deleteTriviaAction(trivia)" *ngIf="user.is_admin"></small>
+      <small class="btn btn-link fa fa-trash mr-sm-2 btn-hover-red" (click)="deleteTriviaAction(trivia)" *ngIf="user.is_admin"></small>
     </div>
 </div>
 <app-footer></app-footer>

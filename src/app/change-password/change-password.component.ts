@@ -27,8 +27,8 @@ export class ChangePasswordComponent implements OnInit {
     if(this.user.retypePassword && this.user.password && this.user.retypePassword == this.user.password)
       this.userService.changePassword(this.user).subscribe(res => {
         switch(res) {
-          case "username": alert("User by that username does not exist!");
-                        break;
+          // case "username": alert("User by that username does not exist!");
+          //               break;
           case "incorrect": alert("Incorrect current password!");
                         break;
           case "success": alert("Password has been changed successfully. Please relogin.");

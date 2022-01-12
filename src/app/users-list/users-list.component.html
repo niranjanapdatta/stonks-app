@@ -1,0 +1,22 @@
+<app-nav-bar></app-nav-bar>
+<table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Username</th>
+        <th scope="col">User Type</th>
+        <th scope="col">Change Admin Status</th>
+        <th scope="col">Delete Account</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <th scope="row">{{ user._id }}</th>
+        <td *ngIf="user.is_admin">Admin</td>
+        <td *ngIf="!user.is_admin">Normal</td>
+        <td *ngIf="!user.is_admin"><button class="btn btn-success" style="width: 6em;" (click)="makeAdminAction(user._id)">Make</button></td>
+        <td *ngIf="user.is_admin"><button class="btn btn-danger" style="width: 6em;" (click)="removeAdminStatusAction(user._id)">Remove</button></td>
+        <td><button class="btn btn-danger fa fa-trash" (click)="deleteUserAction(user._id)"></button></td>
+      </tr>
+    </tbody>
+</table>
+<app-footer></app-footer>
