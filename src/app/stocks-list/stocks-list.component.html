@@ -7,11 +7,11 @@
       <small class="btn">{{ stock.name }}</small>
       <span>
         <small class="btn">₹ {{ stock.analysis?.[0]?.close }}</small>
-        <small class="btn btn btn-link" *ngIf="user.is_admin" (click)="editStockAction(stock)">Edit</small>
-        <small class="btn btn-link" *ngIf="user.is_admin" (click)="deleteStockAction(stock)">Delete</small>
       </span>
     </li>
     <input type="checkbox" (click)="checkboxAction(stock, $event)" style="width: 2em; height: 2em;" class="btn">
+    <small class="btn btn btn-link" *ngIf="user.is_admin" (click)="editStockAction(stock)">Edit</small>
+    <small class="btn btn-link" *ngIf="user.is_admin" (click)="deleteStockAction(stock)">Delete</small>
   </div>
 </ul>
 

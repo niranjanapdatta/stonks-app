@@ -84,10 +84,12 @@ img, iframe {
 .link-item {
     color: black;
     text-decoration: none !important;
+    margin-bottom: 2em;
 }
 
 .link-item:hover {
-    color: blue !important;
+    color: white !important;
+    background-color: #312B2A !important;
 }
 
 .stock-page-container {
@@ -98,4 +100,8 @@ img, iframe {
 
 h1 {
     font-size: 3em !important;
+}
+
+small {
+    text-decoration: none !important;
 }

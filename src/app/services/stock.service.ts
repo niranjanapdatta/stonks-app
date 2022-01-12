@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { forkJoin, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { PotentialReturns } from '../models/potentialReturns';
 import { Stock } from '../models/stock';
 
 @Injectable({
@@ -59,6 +60,18 @@ export class StockService {
 
   getStockToBeViewed(): Stock {
     return this.stockToBeViewed;
+  }
+
+  calculateReturns(closeCurrent: number | undefined, close: number | undefined, dividend: number | undefined, expense_ratio: number | undefined, years: number): PotentialReturns {
+    var returns: PotentialReturns = {};
+    if(closeCurrent != undefined && close != undefined && dividend != undefined && expense_ratio != undefined) {
+      returns.profit = Math.round(closeCurrent - close);
+      var avg: number = (close + closeCurrent) / 2;
+      returns.dividend = Math.round(avg * dividend * years);
+      returns.expenses = Math.round(avg * expense_ratio * years);
+      returns.returns = Math.round((returns.profit + returns.dividend) - returns.expenses);
+    }
+    return returns;
   }
 
 }
