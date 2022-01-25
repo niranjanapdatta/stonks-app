@@ -29,6 +29,10 @@ import { TriviaPageComponent } from './trivia-page/trivia-page.component';
 import { StockPageComponent } from './stock-page/stock-page.component';
 import { ChartsModule } from 'ng2-charts';
 import { UsersListComponent } from './users-list/users-list.component';
+import { IntroductionComponent } from './introduction/introduction.component';
+import { MethodologyComponent } from './methodology/methodology.component';
+import { EdaComponent } from './eda/eda.component';
+import { ResultComponent } from './result/result.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +59,11 @@ import { UsersListComponent } from './users-list/users-list.component';
     InsightPageComponent,
     TriviaPageComponent,
     StockPageComponent,
-    UsersListComponent
+    UsersListComponent,
+    IntroductionComponent,
+    MethodologyComponent,
+    EdaComponent,
+    ResultComponent
   ],
   imports: [
     BrowserModule,

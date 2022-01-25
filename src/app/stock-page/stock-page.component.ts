@@ -53,6 +53,10 @@ export class StockPageComponent implements OnInit {
     this.graphSelected = 5;
   }
 
+  showDurationHighLowChart(): void {
+    this.graphSelected = 6;
+  }
+
   public ChartLabels: Label[] = ['Five Years', 'Three Years', 'One Year', 'Six Months'];
   public ChartLegend = true;
   public ChartPlugins = [];
@@ -68,6 +72,18 @@ export class StockPageComponent implements OnInit {
   public closeChartType: ChartType = 'line';
 
   public closeChartData: ChartDataSets[] = [];
+
+  public durationHighLowChartOptions: ChartOptions = {
+    responsive: true,
+    title: {
+      text: 'Duration High & Low (₹)',
+      display: true,
+      fontSize: 30
+    }
+  };
+  public durationHighLowChartType: ChartType = 'line';
+
+  public durationHighLowChartData: ChartDataSets[] = [];
 
   public volatilityChartOptions: ChartOptions = {
     responsive: true,
@@ -171,6 +187,16 @@ export class StockPageComponent implements OnInit {
         this.stock.analysis?.[0]?.ty_close, 
         this.stock.analysis?.[0]?.oy_close, 
         this.stock.analysis?.[0]?.sm_close], label: this.stock.name?.toString()}
+    ];
+    this.durationHighLowChartData = [
+      { data: [this.stock.analysis?.[0]?.fy_duration_high, 
+        this.stock.analysis?.[0]?.ty_duration_high, 
+        this.stock.analysis?.[0]?.oy_duration_high, 
+        this.stock.analysis?.[0]?.sm_duration_high], label: "Duration High"},
+      { data: [this.stock.analysis?.[0]?.fy_duration_low, 
+        this.stock.analysis?.[0]?.ty_duration_low, 
+        this.stock.analysis?.[0]?.oy_duration_low, 
+        this.stock.analysis?.[0]?.sm_duration_low], label: "Duration Low"},  
     ];
     this.volatilityChartData = [
       { data: [this.stock.analysis?.[0]?.fy_volatility, 

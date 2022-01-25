@@ -17,9 +17,17 @@
         <input type="text" class="form-control" id="name" name="name" [(ngModel)]="stock.name" #name="ngModel">
     </div>
 
-    <div class="form-group">
+    <!-- <div class="form-group">
         <label class="form-label" for="market_standard">Market Standard</label>
         <input type="text" class="form-control" id="market_standard" name="market_standard" [(ngModel)]="stock.market_standard" #market_standard="ngModel">
+    </div> -->
+
+    <div class="form-group">
+        <label class="form-label" for="market_standard">Market Standard</label>
+        <select class="form-control" id="market_standard" name="market_standard" [(ngModel)]="stock.market_standard" #market_standard="ngModel">
+            <option value="NIFTY">NIFTY</option>
+            <option value="BANKNIFTY">BANKNIFTY</option>
+        </select>
     </div>
 
     <div class="form-group">

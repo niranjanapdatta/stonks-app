@@ -9,5 +9,9 @@ export interface Stock {
     dividend?: number,
     series?: String,
     about?: String,
+    dividends_declared? : [ {
+        year: number,
+        amount: number
+    } ]
     analysis? : StockAnalysis[]
 };
