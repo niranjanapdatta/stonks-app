@@ -14,6 +14,12 @@ export class StockFormComponent implements OnInit {
 
   loadingText: String | undefined;
 
+  currentTime: Date = new Date();
+
+  currentYear: number = this.currentTime.getFullYear();
+
+  years: number[] = [this.currentYear - 1, this.currentYear - 2, this.currentYear - 3, this.currentYear - 4, this.currentYear - 5];
+
   constructor(
     private stockService: StockService,
     private router: Router

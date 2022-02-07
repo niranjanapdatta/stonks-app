@@ -165,19 +165,40 @@
     </tbody>
 </table>
 <hr/>
-<div *ngIf="stock.dividends_declared">
+<div>
 <h3>Dividends Declared</h3>
 <table class="table table-striped">
     <thead class="thead-dark">
       <tr>
         <th scope="col">Year</th>
-        <th scope="col">Amount</th>
+        <th scope="col">Amount (₹)</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let dividend of stock.dividends_declared">
-        <th scope="row">{{ dividend.year }}</th>
-        <td>{{ dividend.amount }}</td>
+      <tr>
+        <th scope="row">{{ years[0] }}</th>
+        <td *ngIf="stock.one_year_dividend">{{ stock.one_year_dividend }}</td>
+        <td *ngIf="!stock.one_year_dividend">--</td>
+      </tr>
+      <tr>
+        <th scope="row">{{ years[1] }}</th>
+        <td *ngIf="stock.two_year_dividend">{{ stock.two_year_dividend }}</td>
+        <td *ngIf="!stock.two_year_dividend">--</td>
+      </tr>
+      <tr>
+        <th scope="row">{{ years[2] }}</th>
+        <td *ngIf="stock.three_year_dividend">{{ stock.three_year_dividend }}</td>
+        <td *ngIf="!stock.three_year_dividend">--</td>
+      </tr>
+      <tr>
+        <th scope="row">{{ years[3] }}</th>
+        <td *ngIf="stock.four_year_dividend">{{ stock.four_year_dividend }}</td>
+        <td *ngIf="!stock.four_year_dividend">--</td>
+      </tr>
+      <tr>
+        <th scope="row">{{ years[4] }}</th>
+        <td *ngIf="stock.five_year_dividend">{{ stock.five_year_dividend }}</td>
+        <td *ngIf="!stock.five_year_dividend">--</td>
       </tr>
     </tbody>
 </table>

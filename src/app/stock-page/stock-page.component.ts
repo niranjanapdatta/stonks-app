@@ -29,6 +29,12 @@ export class StockPageComponent implements OnInit {
 
   insights: Insight[] = [];
 
+  currentTime: Date = new Date();
+
+  currentYear: number = this.currentTime.getFullYear();
+
+  years: number[] = [this.currentYear - 1, this.currentYear - 2, this.currentYear - 3, this.currentYear - 4, this.currentYear - 5];
+
   showCloseChart(): void {
     this.graphSelected = 0;
   }
