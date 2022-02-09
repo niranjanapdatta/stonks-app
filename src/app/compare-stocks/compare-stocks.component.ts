@@ -44,6 +44,30 @@ export class CompareStocksComponent implements OnInit {
 
   public closeChartData: ChartDataSets[] = [];
 
+  public durationHighChartOptions: ChartOptions = {
+    responsive: true,
+    title: {
+      text: 'Duration High (₹)',
+      display: true,
+      fontSize: 30
+    }
+  };
+  public durationHighChartType: ChartType = 'line';
+
+  public durationHighChartData: ChartDataSets[] = [];
+
+  public durationLowChartOptions: ChartOptions = {
+    responsive: true,
+    title: {
+      text: 'Duration Low (₹)',
+      display: true,
+      fontSize: 30
+    }
+  };
+  public durationLowChartType: ChartType = 'line';
+
+  public durationLowChartData: ChartDataSets[] = [];
+
   public volatilityChartOptions: ChartOptions = {
     responsive: true,
     title: {
@@ -130,6 +154,14 @@ export class CompareStocksComponent implements OnInit {
     this.graphSelected = 5;
   }
 
+  showDurationHighChart(): void {
+    this.graphSelected = 6;
+  }
+
+  showDurationLowChart(): void {
+    this.graphSelected = 7;
+  }
+
   constructor(
     private stockService: StockService
   ) { }
@@ -167,6 +199,16 @@ export class CompareStocksComponent implements OnInit {
       this.stocks[i].analysis?.[0]?.ty_close, 
       this.stocks[i].analysis?.[0]?.oy_close, 
       this.stocks[i].analysis?.[0]?.sm_close], label: this.stocks[i].name?.toString()});
+
+    this.durationHighChartData.push({ data: [this.stocks[i].analysis?.[0]?.fy_duration_high, 
+      this.stocks[i].analysis?.[0]?.ty_duration_high, 
+      this.stocks[i].analysis?.[0]?.oy_duration_high, 
+      this.stocks[i].analysis?.[0]?.sm_duration_high], label: this.stocks[i].name?.toString()});
+
+    this.durationLowChartData.push({ data: [this.stocks[i].analysis?.[0]?.fy_duration_low, 
+      this.stocks[i].analysis?.[0]?.ty_duration_low, 
+      this.stocks[i].analysis?.[0]?.oy_duration_low, 
+      this.stocks[i].analysis?.[0]?.sm_duration_low], label: this.stocks[i].name?.toString()});
 
     this.volatilityChartData.push({ data: [this.stocks[i].analysis?.[0]?.fy_volatility, 
       this.stocks[i].analysis?.[0]?.ty_volatility, 

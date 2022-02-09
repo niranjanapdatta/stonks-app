@@ -2,6 +2,8 @@
 <div class="stock-page-container">
   <div class="d-flex justify-content-center">
     <button class="btn btn-outline-primary btn-lg right-margin" type="button" (click)="showCloseChart()">Close</button>
+    <button class="btn btn-outline-primary btn-lg right-margin" type="button" (click)="showDurationHighChart()">High</button>
+    <button class="btn btn-outline-primary btn-lg right-margin" type="button" (click)="showDurationLowChart()">Low</button>
     <button class="btn btn-outline-primary btn-lg right-margin" type="button" (click)="showVolatilityChart()">Volatility</button>
     <button class="btn btn-outline-primary btn-lg right-margin" type="button" (click)="showBetaChart()">Beta</button>
     <button class="btn btn-outline-primary btn-lg right-margin" type="button" (click)="showPriceUpDownChart()">Up/ Down</button>
@@ -17,6 +19,26 @@
             [legend]="ChartLegend"
             [chartType]="closeChartType">
           </canvas>
+  </div>
+  <div style="display: block;" *ngIf="graphSelected == 6">
+    <canvas baseChart height="130em"
+      [datasets]="durationHighChartData"
+      [labels]="ChartLabels"
+      [options]="durationHighChartOptions"
+      [plugins]="ChartPlugins"
+      [legend]="ChartLegend"
+      [chartType]="durationHighChartType">
+    </canvas>
+  </div>
+  <div style="display: block;" *ngIf="graphSelected == 7">
+    <canvas baseChart height="130em"
+      [datasets]="durationLowChartData"
+      [labels]="ChartLabels"
+      [options]="durationLowChartOptions"
+      [plugins]="ChartPlugins"
+      [legend]="ChartLegend"
+      [chartType]="durationLowChartType">
+    </canvas>
   </div>
   <div style="display: block;" *ngIf="graphSelected == 1">
     <canvas baseChart height="130em"
@@ -75,6 +97,8 @@
       <tr>
         <th class="header" scope="col">Analysis/ Stock</th>
         <th class="header" scope="col">Close (₹)</th>
+        <th class="header" scope="col">Duration High (₹)</th>
+        <th class="header" scope="col">Duration Low (₹)</th>
         <th class="header" scope="col">Volatility</th>
         <th class="header" scope="col">Beta</th>
         <th class="header" scope="col">Price Up (Days)</th>
@@ -85,13 +109,15 @@
     </thead>
     <tbody>
         <tr>
-            <td colspan="8">
+            <td colspan="10">
                 <h5 class="text-center">Six Months: {{ stocks[0].analysis?.[0]?.sm_date }}</h5>
             </td>
         </tr>
       <tr *ngFor="let stock of stocks">
         <th scope="row">{{ stock.name }}</th>
         <td>{{ stock.analysis?.[0]?.sm_close }}</td>
+        <td>{{ stock.analysis?.[0]?.sm_duration_high }}</td>
+        <td>{{ stock.analysis?.[0]?.sm_duration_low }}</td>
         <td>{{ stock.analysis?.[0]?.sm_volatility }}</td>
         <td>{{ stock.analysis?.[0]?.sm_beta }}</td>
         <td>{{ stock.analysis?.[0]?.sm_price_up }}</td>
@@ -100,13 +126,15 @@
         <td>{{ stock.analysis?.[0]?.sm_avg_price_down }}</td>
       </tr>
         <tr>
-        <td colspan="8">
+        <td colspan="10">
             <h5 class="text-center">One Year: {{ stocks[0].analysis?.[0]?.oy_date }}</h5>
         </td>
         </tr>
       <tr *ngFor="let stock of stocks">
         <th scope="row">{{ stock.name }}</th>
         <td>{{ stock.analysis?.[0]?.oy_close }}</td>
+        <td>{{ stock.analysis?.[0]?.oy_duration_high }}</td>
+        <td>{{ stock.analysis?.[0]?.oy_duration_low }}</td>
         <td>{{ stock.analysis?.[0]?.oy_volatility }}</td>
         <td>{{ stock.analysis?.[0]?.oy_beta }}</td>
         <td>{{ stock.analysis?.[0]?.oy_price_up }}</td>
@@ -115,13 +143,15 @@
         <td>{{ stock.analysis?.[0]?.oy_avg_price_down }}</td>
       </tr>
       <tr>
-        <td colspan="8">
+        <td colspan="10">
             <h5 class="text-center">Three Years: {{ stocks[0].analysis?.[0]?.ty_date }}</h5>
         </td>
         </tr>
       <tr *ngFor="let stock of stocks">
         <th scope="row">{{ stock.name }}</th>
         <td>{{ stock.analysis?.[0]?.ty_close }}</td>
+        <td>{{ stock.analysis?.[0]?.ty_duration_high }}</td>
+        <td>{{ stock.analysis?.[0]?.ty_duration_low }}</td>
         <td>{{ stock.analysis?.[0]?.ty_volatility }}</td>
         <td>{{ stock.analysis?.[0]?.ty_beta }}</td>
         <td>{{ stock.analysis?.[0]?.ty_price_up }}</td>
@@ -130,13 +160,15 @@
         <td>{{ stock.analysis?.[0]?.ty_avg_price_down }}</td>
       </tr>
       <tr>
-        <td colspan="8">
+        <td colspan="10">
             <h5 class="text-center">Five Years: {{ stocks[0].analysis?.[0]?.fy_date }}</h5>
         </td>
         </tr>
       <tr *ngFor="let stock of stocks">
         <th scope="row">{{ stock.name }}</th>
         <td>{{ stock.analysis?.[0]?.fy_close }}</td>
+        <td>{{ stock.analysis?.[0]?.fy_duration_high }}</td>
+        <td>{{ stock.analysis?.[0]?.fy_duration_low }}</td>
         <td>{{ stock.analysis?.[0]?.fy_volatility }}</td>
         <td>{{ stock.analysis?.[0]?.fy_beta }}</td>
         <td>{{ stock.analysis?.[0]?.fy_price_up }}</td>
