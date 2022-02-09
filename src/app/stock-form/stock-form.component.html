@@ -56,46 +56,51 @@
         <textarea class="form-control" id="about" name="about" rows="5" [(ngModel)]="stock.about" #about="ngModel"></textarea>
     </div>
 
-    <div class="alert" style="color: blue !important;">
-        {{ loadingText }}
-    </div>
-
     <div class="form-group">
         <label class="form-label" for="dividends_declared">Dividends Declared</label>
         <table class="table table-striped" id="dividends_declared">
             <thead class="thead-dark">
             <tr>
                 <th scope="col">Year</th>
-                <th scope="col">Amount (₹)</th>
+                <th scope="col">Amount (₹ per share)</th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <td>{{ years[0] }}</td>
-                <td><input type="text" class="form-control" id="one_year_dividend" name="one_year_dividend" [(ngModel)]="stock.one_year_dividend" #one_year_dividend="ngModel"></td>
+                <td><input type="text" class="form-control" id="one_year_dividend" name="one_year_dividend" [(ngModel)]="stock.one_year_dividend" #one_year_dividend="ngModel" pattern="^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$"></td>
             </tr>
             <tr>
                 <td>{{ years[1] }}</td>
-                <td><input type="text" class="form-control" id="two_year_dividend" name="two_year_dividend" [(ngModel)]="stock.two_year_dividend" #two_year_dividend="ngModel"></td>
+                <td><input type="text" class="form-control" id="two_year_dividend" name="two_year_dividend" [(ngModel)]="stock.two_year_dividend" #two_year_dividend="ngModel" pattern="^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$"></td>
             </tr>
             <tr>
                 <td>{{ years[2] }}</td>
-                <td><input type="text" class="form-control" id="three_year_dividend" name="three_year_dividend" [(ngModel)]="stock.three_year_dividend" #three_year_dividend="ngModel"></td>
+                <td><input type="text" class="form-control" id="three_year_dividend" name="three_year_dividend" [(ngModel)]="stock.three_year_dividend" #three_year_dividend="ngModel" pattern="^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$"></td>
             </tr>
             <tr>
                 <td>{{ years[3] }}</td>
-                <td><input type="text" class="form-control" id="four_year_dividend" name="four_year_dividend" [(ngModel)]="stock.four_year_dividend" #four_year_dividend="ngModel"></td>
+                <td><input type="text" class="form-control" id="four_year_dividend" name="four_year_dividend" [(ngModel)]="stock.four_year_dividend" #four_year_dividend="ngModel" pattern="^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$"></td>
             </tr>
             <tr>
                 <td>{{ years[4] }}</td>
-                <td><input type="text" class="form-control" id="five_year_dividend" name="five_year_dividend" [(ngModel)]="stock.five_year_dividend" #five_year_dividend="ngModel"></td>
+                <td><input type="text" class="form-control" id="five_year_dividend" name="five_year_dividend" [(ngModel)]="stock.five_year_dividend" #five_year_dividend="ngModel" pattern="^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$"></td>
             </tr>
             </tbody>
         </table>
     </div>
-    <!-- <div *ngIf="year.errors?.['pattern']" class="alert">
-        Valid value for year is 2000 - 2099
-    </div> -->
+    <div *ngIf="one_year_dividend.errors?.['pattern'] ||
+    two_year_dividend.errors?.['pattern'] ||
+    three_year_dividend.errors?.['pattern'] ||
+    four_year_dividend.errors?.['pattern'] ||
+    five_year_dividend.errors?.['pattern']" class="alert">
+        Valid value for dividend amount is any positive decimal or whole number
+    </div>
+
+    <div class="alert" style="color: blue !important;">
+        {{ loadingText }}
+    </div>
+
     <div class="text-center">
         <button type="submit" class="btn btn-primary" [disabled]='!stockForm.valid || loadingText'>Add</button>
     </div>
